@@ -64,27 +64,6 @@
     .highlights{list-style:none; padding-left:0; margin:12px 0 0}
     .highlights li{position:relative; padding-left:24px; margin:8px 0; line-height:1.5}
     .highlights li::before{content:"✓"; position:absolute; left:0; top:0; color:var(--accent); font-weight:700}
-    /* Skills tiles */
-    .skill-tiles{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
-    @media (max-width:900px){ .skill-tiles{grid-template-columns:1fr} }
-    .tile{perspective:1100px; transform-style:preserve-3d} 
-    .tile-inner{position:relative; width:100%; min-height:300px; transform-style:preserve-3d; transition:transform .55s ease; border-radius:20px; overflow:hidden; will-change:transform} 
-    .tile-front,.tile-back{position:absolute; inset:0; border-radius:20px; padding:20px; display:flex; flex-direction:column; justify-content:center; gap:10px; box-shadow:var(--shadow); border:1px solid var(--border); backface-visibility:hidden; -webkit-backface-visibility:hidden; transition:opacity .25s ease}
-    .tile-front{transform:rotateY(0deg); opacity:1}
-    .tile-back{transform:rotateY(180deg); background:var(--card); overflow:auto; opacity:0}
-    .tile.flipped .tile-front{opacity:0; pointer-events:none}
-    .tile.flipped .tile-back{opacity:1} 
-    .tile-front{transform:rotateY(0deg)}
-    .tile-front .mini{opacity:.9}
-    .tile-front .hint{font-size:.85rem; opacity:.8}
-    .tile.flipped .tile-inner{transform:rotateY(180deg)}
-    .gradient-1{background:linear-gradient(135deg, color-mix(in oklab, var(--card), var(--brand) 12%), color-mix(in oklab, var(--card), var(--accent) 10%)); color:var(--text)}
-    .gradient-2{background:linear-gradient(135deg, color-mix(in oklab, var(--card), #90b4ff 12%), color-mix(in oklab, var(--card), #b7a3ff 10%)); color:var(--text)}
-    .gradient-3{background:linear-gradient(135deg, color-mix(in oklab, var(--card), #ffb24d 12%), color-mix(in oklab, var(--card), #ff8095 10%)); color:var(--text)}
-    .gradient-text{color:var(--text)}
-    .tile .btn.copy{align-self:flex-start; margin-top:8px}
-     
-
     h1{font-size:clamp(28px, 4vw, 42px); margin:6px 0 10px}
     h2{font-size:clamp(22px, 3vw, 28px); margin:0 0 12px}
     p.lead{color:var(--muted); font-size:1.05rem; line-height:1.6}
@@ -324,52 +303,12 @@
 
     <section id="skills">
       <div class="section-title"><h2>Skills</h2></div>
-      <div class="skill-tiles">
-        <div class="tile" tabindex="0" aria-expanded="false" aria-label="Technical skills. Press enter to flip.">
-          <div class="tile-inner">
-            <div class="tile-front gradient-1">
-              <h3 class="gradient-text">Technical</h3>
-              <p class="mini">Python • SQL • Oracle • GCP</p>
-              <span class="hint">Click / tap to flip</span>
-            </div>
-            <div class="tile-back">
-              <ul style="margin:0 0 0 18px; line-height:1.9">
-                <li><strong>Technical Skills:</strong> Python, SQL, Oracle Cloud Infrastructure (OCI), Oracle SQL &amp; PL/SQL, GCP (Google Cloud Platform), SOAP UI, Postman, UNIX/Linux, Power BI, MS Excel, ServiceNow, JIRA, R Language, Teradata, Dataflow, Apache Beam.</li>
-              </ul>
-              
-            </div>
-          </div>
-        </div>
-        <div class="tile" tabindex="0" aria-expanded="false" aria-label="Data engineering skills. Press enter to flip.">
-          <div class="tile-inner">
-            <div class="tile-front gradient-2">
-              <h3 class="gradient-text">Data Engineering</h3>
-              <p class="mini">Pipelines • Modeling • ETL</p>
-              <span class="hint">Click / tap to flip</span>
-            </div>
-            <div class="tile-back">
-              <ul style="margin:0 0 0 18px; line-height:1.9">
-                <li><strong>Data Engineering:</strong> Data Pipelines, Data Analytics Tools, Database Management, Data Modeling, Data Analysis.</li>
-              </ul>
-              
-            </div>
-          </div>
-        </div>
-        <div class="tile" tabindex="0" aria-expanded="false" aria-label="Project and management skills. Press enter to flip.">
-          <div class="tile-inner">
-            <div class="tile-front gradient-3">
-              <h3 class="gradient-text">Project &amp; Management</h3>
-              <p class="mini">Stakeholders • Agile • Docs</p>
-              <span class="hint">Click / tap to flip</span>
-            </div>
-            <div class="tile-back">
-              <ul style="margin:0 0 0 18px; line-height:1.9">
-                <li><strong>Project &amp; Management:</strong> Technology Consulting, Client Stakeholder Management, Cross‑functional Collaboration, Technical Communication, Problem Solving, Business Analysis, Agile &amp; SDLC, Project Management, API Integration, CRM, System Design &amp; Documentation.</li>
-              </ul>
-              
-            </div>
-          </div>
-        </div>
+      <div class="card">
+        <ul style="margin:0 0 0 18px; line-height:1.9">
+          <li><strong>Technical Skills:</strong> Python, SQL, Oracle Cloud Infrastructure (OCI), Oracle SQL &amp; PL/SQL, GCP (Google Cloud Platform), SOAP UI, Postman, UNIX/Linux, Power BI, MS Excel, ServiceNow, JIRA, R Language, Teradata, Dataflow, Apache Beam.</li>
+          <li><strong>Data Engineering:</strong> Data Pipelines, Data Analytics Tools, Database Management, Data Modeling, Data Analysis.</li>
+          <li><strong>Project &amp; Management:</strong> Technology Consulting, Client Stakeholder Management, Cross‑functional Collaboration, Technical Communication, Problem Solving, Business Analysis, Agile &amp; SDLC, Project Management, API Integration, CRM, System Design &amp; Documentation.</li>
+        </ul>
       </div>
     </section>
 
@@ -433,17 +372,7 @@
       });
     }, {rootMargin: '-40% 0px -55% 0px', threshold: 0.01});
     sections.forEach(s => observer.observe(s));
-    // Skills tiles (flip only)
-    const tiles = document.querySelectorAll('.tile');
-    tiles.forEach(tile => {
-      tile.addEventListener('click', () => {
-        tile.classList.toggle('flipped');
-        tile.setAttribute('aria-expanded', tile.classList.contains('flipped'));
-      });
-      tile.addEventListener('keydown', (e) => {
-        if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tile.click(); }
-      });
-    });
+    
 
     // Back-to-top visibility
     const toTop = document.getElementById('toTop');
