@@ -36,7 +36,7 @@
     a{color:var(--brand); text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:1060px; margin:0 auto; padding:0 20px}
-    header{position:fixed; top:0; left:0; right:0; z-index:9999; width:100%; backdrop-filter:blur(10px) saturate(1.2); background:color-mix(in oklab, var(--bg), transparent 62%); border-bottom:1px solid color-mix(in oklab, var(--border), transparent 20%); box-shadow:0 6px 20px rgba(0,0,0,.18);} 
+    header{position:fixed; top:0; left:0; right:0; z-index:9999; width:100%; backdrop-filter:blur(10px) saturate(1.2); /* fallback for browsers that don't support color-mix */ background: rgba(11,12,16,0.62); border-bottom:1px solid rgba(30,36,48,0.8); /* modern */ background:color-mix(in oklab, var(--bg), transparent 62%); border-bottom:1px solid color-mix(in oklab, var(--border), transparent 20%); box-shadow:0 6px 20px rgba(0,0,0,.18);}  
     main{padding-top: calc(var(--header-h) + 18px);} 
     
     .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
@@ -97,6 +97,18 @@
     section{scroll-margin-top:calc(var(--header-h) + 20px)}
     .avatar{width:100%; height:auto; display:block; border-radius:18px; border:1px solid var(--border); box-shadow:var(--shadow); object-fit:contain} 
     .nav a.active{color:var(--accent); text-decoration:none; border-bottom:2px solid var(--accent); padding-bottom:4px}
+      /* Mobile header adjustments */
+    @media (max-width:640px){
+      .nav{height:56px}
+      .nav a.brand{font-size:14px}
+      header nav ul{max-width:58vw; overflow-x:auto; white-space:nowrap; gap:14px; padding-bottom:4px; scrollbar-width:none}
+      header nav ul::-webkit-scrollbar{display:none}
+      .actions{gap:6px}
+      .actions .btn.small.ghost{font-size:0; padding:6px 10px}
+      .actions .btn.small.ghost::before{content:'in'; font-size:14px; font-weight:700}
+      .switch{width:44px; height:24px}
+      .switch .slider::before{height:18px; width:18px}
+    }
   </style>
   <script>
     // Theme: follow user preference, allow toggle, persist in localStorage
