@@ -69,7 +69,9 @@
     @media (max-width:900px){ .skill-tiles{grid-template-columns:1fr} }
     .tile{perspective:1100px}
     .tile-inner{position:relative; width:100%; min-height:300px; transform-style:preserve-3d; transition:transform .55s ease; border-radius:20px; overflow:hidden}
-    .tile-front,.tile-back{position:absolute; inset:0; border-radius:20px; padding:20px; display:flex; flex-direction:column; justify-content:center; gap:10px; backface-visibility:hidden; box-shadow:var(--shadow); border:1px solid var(--border)}
+    .tile-front,.tile-back{position:absolute; inset:0; border-radius:20px; padding:20px; display:flex; flex-direction:column; justify-content:center; gap:10px; box-shadow:var(--shadow); border:1px solid var(--border); backface-visibility:hidden; -webkit-backface-visibility:hidden}
+    .tile-front{transform:rotateY(0deg)}
+    .tile-back{transform:rotateY(180deg); background:var(--card); overflow:auto}
     .tile-front .mini{opacity:.9}
     .tile-front .hint{font-size:.85rem; opacity:.8}
     .tile-back{transform:rotateY(180deg); background:var(--card); overflow:auto}
