@@ -47,7 +47,8 @@
     #toTop{position:fixed; right:22px; bottom:22px; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:var(--card); box-shadow:var(--shadow); display:none; z-index:60} 
 
     .hero{display:grid; grid-template-columns:1.15fr .85fr; gap:28px; padding:48px 0 28px}
-    .card{background:var(--card); border:1px solid var(--border); border-radius:20px; padding:22px; box-shadow:var(--shadow)}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:20px; padding:22px; box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .15s ease}
+    .card:hover{transform:translateY(-2px); box-shadow:0 14px 34px rgba(0,0,0,.28)}
     .badges{display:flex; flex-wrap:wrap; gap:10px}
     .badge{border:1px solid var(--border); padding:6px 10px; border-radius:999px; font-size:.88rem; color:var(--muted)}
     .highlights{list-style:none; padding-left:0; margin:12px 0 0}
@@ -65,6 +66,8 @@
 
     section{padding:18px 0 8px}
     .section-title{display:flex; align-items:center; justify-content:space-between; margin:10px 0 14px}
+    .section-title h2{position:relative; padding-bottom:6px}
+    .section-title h2::after{content:""; position:absolute; left:0; right:0; bottom:0; height:3px; background:linear-gradient(90deg, var(--brand), var(--accent)); border-radius:3px; opacity:.8}
     .divider{height:1px; background:var(--border); margin:18px 0}
 
     /* Experience timeline */
@@ -228,9 +231,17 @@
       <div class="section-title"><h2>Projects</h2></div>
       <div class="grid cols-2">
         <article class="card">
-          <h3>RoF‑OFDM Architecture for Data Transfer</h3>
-          <p class="lead">Designed a circuit and evaluated OFDM over radio‑over‑fiber, comparing link parameters and receiver efficiency.</p>
-          <div class="badges"><span class="badge">Signal Processing</span><span class="badge">RF</span></div>
+          <h3>Loan Default Prediction & Investment Strategy (UIC)</h3>
+          <p class="lead">Developed models to predict loan defaults on a peer‑to‑peer lending platform and guide investment decisions.</p>
+          <ul style="margin:6px 0 0 18px; line-height:1.7">
+            <li>Conducted EDA to uncover insights by demographics and behavior.</li>
+            <li>Addressed class imbalance for better prediction accuracy.</li>
+            <li>Analyzed loan data by grade, borrower attributes, and purpose to identify default risks.</li>
+            <li>Created models (Decision Tree, Random Forest, GBM) to classify loans and assess profitability.</li>
+            <li>Conducted investment simulations, comparing model‑based returns to baseline options.</li>
+          </ul>
+          <p class="lead" style="margin-top:6px"><strong>Result:</strong> Provided data‑driven insights to support profitable lending decisions and mitigate default risks.</p>
+          <div class="badges" style="margin-top:8px"><span class="badge">Decision Tree</span><span class="badge">Random Forest</span><span class="badge">GBM</span><span class="badge">AUC/ROC</span><span class="badge">Lift</span></div>
         </article>
 
         <article class="card">
@@ -253,10 +264,17 @@
         <article class="card">
           <h3>University of Illinois Chicago</h3>
           <p class="lead">M.S. — Business Analytics (2024 – Present)</p>
+          <ul style="margin:6px 0 0 18px; line-height:1.7">
+            <li><strong>GPA:</strong> <em>4.00/4.00</em></li>
+            <li><strong>Selected Coursework:</strong> IDS 521 Advanced Database Management; IDS 567 Business Data Visualization; IDS 572 Data Mining for Business; IDS 575 Machine Learning &amp; Statistics; IDS 561 Analytics for Big Data; IDS 569 Reinforcement Learning; IDS 532 Intro to Operations Mgmt; IDS 594 Special Topics in IDS (MLOps); MKTG 561 Consumer Behavior.</li>
+          </ul>
         </article>
         <article class="card">
           <h3>SRM University, Chennai</h3>
           <p class="lead">B.Tech — Electronics & Communications Engineering (2016 – 2020)</p>
+          <ul style="margin:6px 0 0 18px; line-height:1.7">
+            <li><strong>Selected Coursework:</strong> Statistics, Embedded Systems, Signals & Systems, Data Structures, Microprocessors.</li>
+          </ul>
         </article>
       </div>
     </section>
@@ -264,31 +282,11 @@
     <section id="skills">
       <div class="section-title"><h2>Skills</h2></div>
       <div class="card">
-        <div class="badges">
-          <span class="badge">Technology Consulting</span>
-          <span class="badge">Stakeholder Management</span>
-          <span class="badge">Business Analysis</span>
-          <span class="badge">Agile / SDLC</span>
-          <span class="badge">Data Modeling</span>
-          <span class="badge">API Integration</span>
-          <span class="badge">System Design</span>
-          <span class="badge">Documentation</span>
-          <span class="badge">SQL</span>
-          <span class="badge">Python</span>
-          <span class="badge">Oracle SQL/PLSQL</span>
-          <span class="badge">Oracle Cloud (OCI)</span>
-          <span class="badge">GCP</span>
-          <span class="badge">SOAP UI</span>
-          <span class="badge">Postman</span>
-          <span class="badge">UNIX/Linux</span>
-          <span class="badge">Power BI</span>
-          <span class="badge">ServiceNow</span>
-          <span class="badge">JIRA</span>
-          <span class="badge">Teradata</span>
-          <span class="badge">Dataflow</span>
-          <span class="badge">Apache Beam</span>
-          <span class="badge">R</span>
-        </div>
+        <ul style="margin:0 0 0 18px; line-height:1.9">
+          <li><strong>Technical Skills:</strong> Python, SQL, Oracle Cloud Infrastructure (OCI), Oracle SQL & PL/SQL, GCP (Google Cloud Platform), SOAP UI, Postman, UNIX/Linux, Power BI, MS Excel, ServiceNow, JIRA, R Language, Teradata, Dataflow, Apache Beam.</li>
+          <li><strong>Data Engineering:</strong> Data Pipelines, Data Analytics Tools, Database Management, Data Structures, Data Modeling, Data Analysis.</li>
+          <li><strong>Project & Management:</strong> Technology Consulting, Client Stakeholder Management, Problem Solving, Business Analysis, Agile & SDLC, Project Management, API Integration, CRM, System Design & Documentation.</li>
+        </ul>
       </div>
     </section>
 
