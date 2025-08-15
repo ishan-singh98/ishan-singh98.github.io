@@ -75,6 +75,11 @@
 
     footer{padding:48px 0 64px; color:var(--muted); text-align:center}
     .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+      /* Enhancements: smooth scrolling, avatar image, active nav */
+    html{scroll-behavior:smooth}
+    section{scroll-margin-top:84px}
+    .avatar{width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:18px; border:1px solid var(--border); box-shadow:var(--shadow)}
+    .nav a.active{color:var(--accent); text-decoration:none; border-bottom:2px solid var(--accent); padding-bottom:4px}
   </style>
   <script>
     // Theme: follow user preference, allow toggle, persist in localStorage
@@ -134,9 +139,13 @@
           </a>
           <a class="btn ghost" href="#contact">✉️ Email me</a>
           <a class="btn ghost" href="https://www.linkedin.com/in/ishan-singh-b92697143/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+          <a class="btn ghost" href="#projects">🚀 Projects</a>
+          <a class="btn ghost" href="#experience">💼 Experience</a>
         </div>
       </div>
       <div class="card">
+        <img src="assets/headshot.jpg" alt="Ishan Singh headshot" class="avatar" />
+        <div class="divider"></div>
         <h2>At a glance</h2>
         <ul style="margin:0 0 0 18px; line-height:1.7">
           <li>3+ years at Deloitte USI delivering data & integration solutions across finance modules.</li>
@@ -145,6 +154,15 @@
           <li>Currently deepening analytics & ML skills at UIC.</li>
         </ul>
         <div class="divider"></div>
+        <h2>Focus areas</h2>
+        <div class="badges">
+          <span class="badge">Data Modeling</span>
+          <span class="badge">Integration Architecture</span>
+          <span class="badge">Analytics & Visualization</span>
+          <span class="badge">Testing & QA</span>
+          <span class="badge">Documentation</span>
+        </div>
+      </div>
         <h2>Focus areas</h2>
         <div class="badges">
           <span class="badge">Data Modeling</span>
@@ -216,9 +234,10 @@
         </article>
 
         <article class="card">
-          <h3>Analytics Portfolio (placeholder)</h3>
-          <p class="lead">Add a short blurb for a standout analytics/ML project you want recruiters to see first. Link a GitHub repo or demo.</p>
-          <div class="badges"><span class="badge">Python</span><span class="badge">ML</span></div>
+          <h3>UIC Graduate Programs RAG Chatbot</h3>
+          <p class="lead">Built a Retrieval‑Augmented Generation chatbot that answers questions about UIC graduate programs. Scraped program + requirement pages with Scrapy, normalized into MySQL (GCP), created embeddings, and indexed in Pinecone. The app uses OpenAI for generation with FastAPI/Streamlit UI and program‑scoped retrieval logic.</p>
+          <div class="badges"><span class="badge">Python</span><span class="badge">Scrapy</span><span class="badge">MySQL</span><span class="badge">RAG</span><span class="badge">Pinecone</span><span class="badge">OpenAI API</span><span class="badge">FastAPI</span></div>
+          <p style="margin-top:10px"><a href="https://github.com/ishan-singh98" target="_blank" rel="noopener">View code →</a></p>
         </article>
       </div>
     </section>
@@ -314,6 +333,23 @@
       const isLight = document.documentElement.classList.toggle('light');
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
+    // Scrollspy: highlight nav item & update hash as sections enter viewport
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('header nav a[href^="#"]');
+    const linkMap = new Map([...navLinks].map(l => [l.getAttribute('href').slice(1), l]));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          const link = linkMap.get(entry.target.id);
+          if (link) {
+            link.classList.add('active');
+            history.replaceState(null, '', '#' + entry.target.id);
+          }
+        }
+      });
+    }, {rootMargin: '-40% 0px -55% 0px', threshold: 0.01});
+    sections.forEach(s => observer.observe(s));
   </script>
 </body>
 </html>
