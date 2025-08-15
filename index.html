@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ishan Singh — Portfolio</title>
-  <meta name="description" content="Portfolio of Ishan Singh — Consultant and MS in Business Analytics at UIC. Professional experience, projects, education, and ways to get in touch." />
+  <meta name="description" content="Portfolio of Ishan Singh — Data Engineering & Analytics (MSBA at UIC). Work experience, projects, education, and ways to get in touch." />
   <meta name="robots" content="index,follow" />
   <!-- Open Graph / Twitter for nice link previews -->
   <meta property="og:title" content="Ishan Singh — Portfolio" />
-  <meta property="og:description" content="Consultant and MS in Business Analytics at UIC. Explore my work, projects, and background." />
+  <meta property="og:description" content="Data Engineering & Analytics — explore projects, experience, and education (MSBA at UIC)." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ishan-singh98.github.io/" />
   <meta property="og:image" content="https://ishan-singh98.github.io/assets/preview.png" />
@@ -35,16 +35,24 @@
     a{color:var(--brand); text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:1060px; margin:0 auto; padding:0 20px}
-    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.4) blur(8px); background:color-mix(in oklab, var(--bg), transparent 55%); border-bottom:1px solid var(--border)}
+    header{position:sticky; top:0; z-index:60; backdrop-filter:blur(10px) saturate(1.2); background:color-mix(in oklab, var(--bg), transparent 45%); border-bottom:1px solid var(--border); transition:background .25s ease, border-color .25s ease, box-shadow .25s ease}
+    header.scrolled{background:color-mix(in oklab, var(--bg), transparent 68%); border-bottom-color:color-mix(in oklab, var(--border), transparent 30%); box-shadow:0 6px 20px rgba(0,0,0,.18)}
     .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
     .nav a.brand{font-weight:700; letter-spacing:.3px}
     .nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
+    .actions{display:flex; align-items:center; gap:10px}
     .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border:1px solid var(--border); border-radius:14px; background:linear-gradient(180deg, color-mix(in oklab, var(--card), transparent 10%), var(--card)); box-shadow:var(--shadow); color:var(--text); font-weight:600}
     .btn:hover{transform:translateY(-1px); transition:transform .15s}
     .btn.ghost{background:transparent; box-shadow:none}
     .btn.small{padding:8px 12px; border-radius:12px}
-    .btn.accent{background:linear-gradient(180deg, color-mix(in oklab, var(--brand), white 10%), var(--brand)); color:#fff; border-color:color-mix(in oklab, var(--brand), black 20%)}
-    #toTop{position:fixed; right:22px; bottom:22px; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:var(--card); box-shadow:var(--shadow); display:none; z-index:60} 
+    .btn.accent{background:linear-gradient(180deg, color-mix(in oklab, var(--brand), white 10%), var(--brand)); color:#fff; border-color:color-mix(in oklab, var(--brand), black 20%)}#toTop{position:fixed; right:22px; bottom:22px; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:var(--card); box-shadow:var(--shadow); display:none; z-index:60}
+    /* Switch toggle */
+    .theme-toggle{display:flex; align-items:center; gap:8px}
+    .switch{position:relative; width:48px; height:26px; display:inline-block}
+    .switch input{opacity:0; width:0; height:0}
+    .switch .slider{position:absolute; inset:0; border-radius:999px; background:color-mix(in oklab, var(--card), white 6%); border:1px solid var(--border); transition:background .2s ease, border-color .2s ease}
+    .switch .slider::before{content:""; position:absolute; height:20px; width:20px; left:3px; top:3px; border-radius:50%; background:var(--text); box-shadow:var(--shadow); transition:transform .2s ease}
+    .switch input:checked + .slider::before{transform:translateX(22px)} 
 
     .hero{display:grid; grid-template-columns:1.15fr .85fr; gap:28px; padding:48px 0 28px}
     .card{background:var(--card); border:1px solid var(--border); border-radius:20px; padding:22px; box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .15s ease}
@@ -123,14 +131,24 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-      <button id="themeBtn" class="btn small ghost" aria-label="Toggle theme">🌓</button>
-    </div>
+      <div class="actions">
+        
+        <div class="theme-toggle" aria-label="Theme toggle">
+          <span aria-hidden="true">🌙</span>
+          <label class="switch">
+            <input type="checkbox" id="themeSwitch" aria-label="Toggle light and dark theme" />
+            <span class="slider"></span>
+          </label>
+          <span aria-hidden="true">☀️</span>
+        </div>
+      </div>
+      </div>
   </header>
 
   <main id="home" class="container">
     <section class="hero">
       <div class="card">
-        <h1>Consultant & MS in Business Analytics</h1>
+        <h1>Data Engineering &amp; Analytics</h1>
         <p class="lead">I'm <strong>Ishan Singh</strong>, a data-driven consultant experienced in Oracle Cloud integrations, SQL performance tuning, and data engineering practices. I'm pursuing my M.S. in Business Analytics at the University of Illinois Chicago.</p>
         <ul class="highlights">
           <li>Designed and shipped Oracle Cloud integrations (SOAP/REST) and optimized SQL for reliability and speed.</li>
@@ -151,8 +169,7 @@
             <span>⬇️</span> Download Résumé
           </a>
           <a class="btn ghost" href="#contact">✉️ Email me</a>
-          <a class="btn ghost" href="https://www.linkedin.com/in/ishan-singh-b92697143/" target="_blank" rel="noopener">🔗 LinkedIn</a>
-          <a class="btn ghost" href="#projects">🚀 Projects</a>
+                    <a class="btn ghost" href="#projects">🚀 Projects</a>
           <a class="btn ghost" href="#experience">💼 Experience</a>
         </div>
       </div>
@@ -336,10 +353,18 @@
         setTimeout(()=> btn.textContent = prev, 1200);
       } catch (_) {}
     });
-    document.getElementById('themeBtn').addEventListener('click', () => {
-      const isLight = document.documentElement.classList.toggle('light');
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    });
+    (function(){
+      const el = document.getElementById('themeSwitch');
+      if(!el) return;
+      // set initial state based on class
+      el.checked = document.documentElement.classList.contains('light');
+      el.addEventListener('change', (e) => {
+        const setLight = e.target.checked;
+        document.documentElement.classList.toggle('light', setLight);
+        localStorage.setItem('theme', setLight ? 'light' : 'dark');
+      });
+    })();
+      
     // Scrollspy: highlight nav item & update hash as sections enter viewport
     const sections = document.querySelectorAll('main section[id]');
     const navLinks = document.querySelectorAll('header nav a[href^="#"]');
@@ -361,9 +386,11 @@
     sections.forEach(s => observer.observe(s));
     // Back-to-top visibility
     const toTop = document.getElementById('toTop');
+    const headerEl = document.querySelector('header');
     window.addEventListener('scroll', () => {
       const y = window.scrollY || document.documentElement.scrollTop;
       toTop.style.display = y > 450 ? 'inline-flex' : 'none';
+      headerEl.classList.toggle('scrolled', y > 8);
     });
     toTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
   </script>
