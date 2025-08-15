@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ishan Singh — Portfolio</title>
+  <meta name="description" content="Portfolio of Ishan Singh — Consultant and MS in Business Analytics at UIC. Professional experience, projects, education, and ways to get in touch." />
+  <meta name="robots" content="index,follow" />
+  <!-- Open Graph / Twitter for nice link previews -->
+  <meta property="og:title" content="Ishan Singh — Portfolio" />
+  <meta property="og:description" content="Consultant and MS in Business Analytics at UIC. Explore my work, projects, and background." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ishan-singh98.github.io/" />
+  <meta property="og:image" content="https://ishan-singh98.github.io/assets/preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/assets/favicon.png" />
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --card: #111318;
+      --text: #e8eaed;
+      --muted: #b7c0cc;
+      --brand: #6aa6ff;
+      --accent: #8ef0d0;
+      --border: #1e2430;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    :root.light{
+      --bg:#fcfcfd; --card:#ffffff; --text:#1f2937; --muted:#4b5563; --brand:#1f6feb; --accent:#059669; --border:#e5e7eb; --shadow:0 8px 24px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; background:var(--bg); color:var(--text);}
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1060px; margin:0 auto; padding:0 20px}
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.4) blur(8px); background:color-mix(in oklab, var(--bg), transparent 55%); border-bottom:1px solid var(--border)}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .nav a.brand{font-weight:700; letter-spacing:.3px}
+    .nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border:1px solid var(--border); border-radius:14px; background:linear-gradient(180deg, color-mix(in oklab, var(--card), transparent 10%), var(--card)); box-shadow:var(--shadow); color:var(--text); font-weight:600}
+    .btn:hover{transform:translateY(-1px); transition:transform .15s}
+    .btn.ghost{background:transparent; box-shadow:none}
+    .btn.small{padding:8px 12px; border-radius:12px}
+
+    .hero{display:grid; grid-template-columns:1.15fr .85fr; gap:28px; padding:48px 0 28px}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:20px; padding:22px; box-shadow:var(--shadow)}
+    .badges{display:flex; flex-wrap:wrap; gap:10px}
+    .badge{border:1px solid var(--border); padding:6px 10px; border-radius:999px; font-size:.88rem; color:var(--muted)}
+
+    h1{font-size:clamp(28px, 4vw, 42px); margin:6px 0 10px}
+    h2{font-size:clamp(22px, 3vw, 28px); margin:0 0 12px}
+    p.lead{color:var(--muted); font-size:1.05rem; line-height:1.6}
+
+    .grid{display:grid; gap:16px}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    @media (max-width:900px){ .hero{grid-template-columns:1fr} .grid.cols-2, .grid.cols-3{grid-template-columns:1fr} }
+
+    section{padding:18px 0 8px}
+    .section-title{display:flex; align-items:center; justify-content:space-between; margin:10px 0 14px}
+    .divider{height:1px; background:var(--border); margin:18px 0}
+
+    /* Experience timeline */
+    .timeline{position:relative; padding-left:24px}
+    .timeline::before{content:""; position:absolute; left:10px; top:4px; bottom:4px; width:2px; background:var(--border)}
+    .t-item{position:relative; margin:0 0 18px}
+    .t-item::before{content:""; position:absolute; left:-2px; top:6px; width:12px; height:12px; border:2px solid var(--brand); border-radius:50%; background:var(--card)}
+    .t-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+    .t-role{font-weight:700}
+    .t-meta{color:var(--muted); font-size:.95rem}
+    .t-body{margin:8px 0 0}
+    .t-body ul{margin:6px 0 0 18px}
+
+    footer{padding:48px 0 64px; color:var(--muted); text-align:center}
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+  </style>
+  <script>
+    // Theme: follow user preference, allow toggle, persist in localStorage
+    (function(){
+      const ls = localStorage.getItem('theme');
+      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+      const initial = ls ? ls : (prefersLight ? 'light' : 'dark');
+      if(initial === 'light'){ document.documentElement.classList.add('light'); }
+    })();
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ishan Singh",
+    "email": "mailto:ishansingh98@gmail.com",
+    "telephone": "+1-312-285-9350",
+    "url": "https://ishan-singh98.github.io/",
+    "sameAs": ["https://www.linkedin.com/in/ishan-singh-b92697143/"]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Ishan Singh home">Ishan Singh</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="themeBtn" class="btn small ghost" aria-label="Toggle theme">🌓</button>
+    </div>
+  </header>
+
+  <main id="home" class="container">
+    <section class="hero">
+      <div class="card">
+        <h1>Consultant & MS in Business Analytics</h1>
+        <p class="lead">I'm <strong>Ishan Singh</strong>, a data-driven consultant experienced in Oracle Cloud integrations, SQL performance tuning, and data engineering practices. I'm pursuing my M.S. in Business Analytics at the University of Illinois Chicago.</p>
+        <div class="badges" style="margin:16px 0 10px">
+          <span class="badge">SQL</span>
+          <span class="badge">Python</span>
+          <span class="badge">Oracle Cloud (OCI)</span>
+          <span class="badge">APIs (SOAP/REST)</span>
+          <span class="badge">GCP · Dataflow · Beam</span>
+          <span class="badge">UNIX/Shell</span>
+          <span class="badge">Power BI</span>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px">
+          <a class="btn" href="assets/Ishan_Singh_CV.pdf" download>
+            <span>⬇️</span> Download Résumé
+          </a>
+          <a class="btn ghost" href="#contact">✉️ Email me</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/ishan-singh-b92697143/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+        </div>
+      </div>
+      <div class="card">
+        <h2>At a glance</h2>
+        <ul style="margin:0 0 0 18px; line-height:1.7">
+          <li>3+ years at Deloitte USI delivering data & integration solutions across finance modules.</li>
+          <li>Hands-on with end‑to‑end data pipelines, BRM enhancements, and BICC‑driven ETL.</li>
+          <li>Comfortable collaborating across business & IT; practiced in Agile/Scrum.</li>
+          <li>Currently deepening analytics & ML skills at UIC.</li>
+        </ul>
+        <div class="divider"></div>
+        <h2>Focus areas</h2>
+        <div class="badges">
+          <span class="badge">Data Modeling</span>
+          <span class="badge">Integration Architecture</span>
+          <span class="badge">Analytics & Visualization</span>
+          <span class="badge">Testing & QA</span>
+          <span class="badge">Documentation</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-title">
+        <h2>Experience</h2>
+      </div>
+      <div class="timeline">
+        <article class="t-item card">
+          <div class="t-head">
+            <div class="t-role">Consultant — Deloitte USI, Hyderabad</div>
+            <div class="t-meta">Apr 2024 – Aug 2024</div>
+          </div>
+          <div class="t-body">
+            <ul>
+              <li>Designed inbound/outbound Oracle Cloud integrations using SOAP/REST; validated data flows with SOAP UI & Postman.</li>
+              <li>Tuned complex SQL queries (notably reducing runtimes), led reviews, mentored junior analysts, and resolved UAT/prod defects.</li>
+              <li>Participated in daily Agile ceremonies to drive on-time deliverables across cross‑functional teams.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="t-item card">
+          <div class="t-head">
+            <div class="t-role">Analyst — Deloitte USI, Hyderabad</div>
+            <div class="t-meta">May 2021 – May 2024</div>
+          </div>
+          <div class="t-body">
+            <ul>
+              <li>Led data modeling for BIP reports & integrations; authored SQL across Project Costing, Fixed Assets, Procurement, AP, and OTL.</li>
+              <li>Wrote design docs (business context diagrams, lean specs) and drove review cycles with stakeholders.</li>
+              <li>Validated pipelines from Teradata to GCP during UAT; exposure to Dataflow & Apache Beam.</li>
+              <li>Delivered JSON/XML data to downstream consumers and collaborated for smooth integrations.</li>
+              <li>Enhanced Oracle BRM (currency conversion) via pipeline changes, iScript, and UNIX/Shell & Java troubleshooting.</li>
+              <li>Modeled warehouse components (GL, FA, AR, Project Foundation, Procurement, Cash Mgmt) and scheduled loads via BICC ETL.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="t-item card">
+          <div class="t-head">
+            <div class="t-role">Business Development Associate — BYJU'S, New Delhi</div>
+            <div class="t-meta">Jun 2020 – Nov 2020</div>
+          </div>
+          <div class="t-body">
+            <ul>
+              <li>Drove sales by communicating product value and addressing customer needs following intensive training.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-title"><h2>Projects</h2></div>
+      <div class="grid cols-2">
+        <article class="card">
+          <h3>RoF‑OFDM Architecture for Data Transfer</h3>
+          <p class="lead">Designed a circuit and evaluated OFDM over radio‑over‑fiber, comparing link parameters and receiver efficiency.</p>
+          <div class="badges"><span class="badge">Signal Processing</span><span class="badge">RF</span></div>
+        </article>
+
+        <article class="card">
+          <h3>Analytics Portfolio (placeholder)</h3>
+          <p class="lead">Add a short blurb for a standout analytics/ML project you want recruiters to see first. Link a GitHub repo or demo.</p>
+          <div class="badges"><span class="badge">Python</span><span class="badge">ML</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="section-title"><h2>Education</h2></div>
+      <div class="grid cols-2">
+        <article class="card">
+          <h3>University of Illinois Chicago</h3>
+          <p class="lead">M.S. — Business Analytics (2024 – Present)</p>
+        </article>
+        <article class="card">
+          <h3>SRM University, Chennai</h3>
+          <p class="lead">B.Tech — Electronics & Communications Engineering (2016 – 2020)</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-title"><h2>Skills</h2></div>
+      <div class="card">
+        <div class="badges">
+          <span class="badge">Technology Consulting</span>
+          <span class="badge">Stakeholder Management</span>
+          <span class="badge">Business Analysis</span>
+          <span class="badge">Agile / SDLC</span>
+          <span class="badge">Data Modeling</span>
+          <span class="badge">API Integration</span>
+          <span class="badge">System Design</span>
+          <span class="badge">Documentation</span>
+          <span class="badge">SQL</span>
+          <span class="badge">Python</span>
+          <span class="badge">Oracle SQL/PLSQL</span>
+          <span class="badge">Oracle Cloud (OCI)</span>
+          <span class="badge">GCP</span>
+          <span class="badge">SOAP UI</span>
+          <span class="badge">Postman</span>
+          <span class="badge">UNIX/Linux</span>
+          <span class="badge">Power BI</span>
+          <span class="badge">ServiceNow</span>
+          <span class="badge">JIRA</span>
+          <span class="badge">Teradata</span>
+          <span class="badge">Dataflow</span>
+          <span class="badge">Apache Beam</span>
+          <span class="badge">R</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title"><h2>Contact</h2></div>
+      <div class="grid cols-2">
+        <article class="card">
+          <h3>Let's talk</h3>
+          <p class="lead">Interested in collaborating or have an opportunity that matches my background? Reach out:</p>
+          <p><strong>Email:</strong> <a id="emailLink" href="mailto:ishansingh98@gmail.com">ishansingh98@gmail.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+13122859350">+1 (312) 285‑9350</a></p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px">
+            <button class="btn small" id="copyEmail">Copy email</button>
+            <a class="btn small ghost" href="https://www.linkedin.com/in/ishan-singh-b92697143/" target="_blank" rel="noopener">Open LinkedIn</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Quick links</h3>
+          <ul style="margin:0 0 0 18px; line-height:1.9">
+            <li><a href="#experience">Work Experience</a></li>
+            <li><a href="assets/Ishan_Singh_CV.pdf">Résumé (PDF)</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div>© <span id="year"></span> Ishan Singh. Built with vanilla HTML/CSS and hosted on GitHub Pages.</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('copyEmail').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('ishansingh98@gmail.com');
+        const btn = document.getElementById('copyEmail');
+        const prev = btn.textContent; btn.textContent = 'Copied!';
+        setTimeout(()=> btn.textContent = prev, 1200);
+      } catch (_) {}
+    });
+    document.getElementById('themeBtn').addEventListener('click', () => {
+      const isLight = document.documentElement.classList.toggle('light');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>
