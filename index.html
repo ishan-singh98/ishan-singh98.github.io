@@ -67,14 +67,16 @@
     /* Skills tiles */
     .skill-tiles{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
     @media (max-width:900px){ .skill-tiles{grid-template-columns:1fr} }
-    .tile{perspective:1100px}
-    .tile-inner{position:relative; width:100%; min-height:300px; transform-style:preserve-3d; transition:transform .55s ease; border-radius:20px; overflow:hidden}
-    .tile-front,.tile-back{position:absolute; inset:0; border-radius:20px; padding:20px; display:flex; flex-direction:column; justify-content:center; gap:10px; box-shadow:var(--shadow); border:1px solid var(--border); backface-visibility:hidden; -webkit-backface-visibility:hidden}
+    .tile{perspective:1100px; transform-style:preserve-3d} 
+    .tile-inner{position:relative; width:100%; min-height:300px; transform-style:preserve-3d; transition:transform .55s ease; border-radius:20px; overflow:hidden; will-change:transform} 
+    .tile-front,.tile-back{position:absolute; inset:0; border-radius:20px; padding:20px; display:flex; flex-direction:column; justify-content:center; gap:10px; box-shadow:var(--shadow); border:1px solid var(--border); backface-visibility:hidden; -webkit-backface-visibility:hidden; transition:opacity .25s ease}
+    .tile-front{transform:rotateY(0deg); opacity:1}
+    .tile-back{transform:rotateY(180deg); background:var(--card); overflow:auto; opacity:0}
+    .tile.flipped .tile-front{opacity:0; pointer-events:none}
+    .tile.flipped .tile-back{opacity:1} 
     .tile-front{transform:rotateY(0deg)}
-    .tile-back{transform:rotateY(180deg); background:var(--card); overflow:auto}
     .tile-front .mini{opacity:.9}
     .tile-front .hint{font-size:.85rem; opacity:.8}
-    .tile-back{transform:rotateY(180deg); background:var(--card); overflow:auto}
     .tile.flipped .tile-inner{transform:rotateY(180deg)}
     .gradient-1{background:linear-gradient(135deg, color-mix(in oklab, var(--card), var(--brand) 12%), color-mix(in oklab, var(--card), var(--accent) 10%)); color:var(--text)}
     .gradient-2{background:linear-gradient(135deg, color-mix(in oklab, var(--card), #90b4ff 12%), color-mix(in oklab, var(--card), #b7a3ff 10%)); color:var(--text)}
