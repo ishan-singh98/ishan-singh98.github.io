@@ -3,457 +3,854 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ishan Singh — Portfolio</title>
-  <meta name="description" content="Portfolio of Ishan Singh — Data Engineering & Analytics (MSBA at UIC). Work experience, projects, education, and ways to get in touch." />
+  <title>Ishan Singh — Data Engineer & AI Builder</title>
+  <meta name="description" content="Portfolio of Ishan Singh — Data Engineer and AI builder. MSBA at UIC. Projects in Kafka, RAG, LLM fine-tuning, and more." />
   <meta name="robots" content="index,follow" />
-  <!-- Open Graph / Twitter for nice link previews -->
-  <meta property="og:title" content="Ishan Singh — Portfolio" />
-  <meta property="og:description" content="Data Engineering & Analytics — explore projects, experience, and education (MSBA at UIC)." />
+  <meta property="og:title" content="Ishan Singh — Data Engineer & AI Builder" />
+  <meta property="og:description" content="Data Engineering and Applied AI — Kafka pipelines, RAG systems, LLM fine-tuning." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ishan-singh98.github.io/" />
-  <meta property="og:image" content="https://ishan-singh98.github.io/assets/preview.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="theme-color" content="#0b0c10" />
+  <meta name="theme-color" content="#080a0f" />
   <link rel="canonical" href="https://ishan-singh98.github.io/" />
-
   <link rel="icon" href="/assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <style>
-    :root{
-      --bg: #0b0c10;
-      --card: #111318;
-      --text: #e8eaed;
-      --muted: #b7c0cc;
-      --brand: #6aa6ff;
-      --accent: #8ef0d0;
-      --border: #1e2430;
-      --shadow: 0 10px 30px rgba(0,0,0,.25);
-      --header-h: 64px;
+    :root {
+      --bg: #080a0f;
+      --surface: #0d1117;
+      --card: #111827;
+      --card-hover: #161f2e;
+      --border: #1e2d40;
+      --border-bright: #2a3f57;
+      --text: #e2e8f0;
+      --muted: #8b9ab0;
+      --faint: #4a5568;
+      --brand: #3b82f6;
+      --brand-bright: #60a5fa;
+      --accent: #06b6d4;
+      --accent-dim: #0e7490;
+      --green: #10b981;
+      --orange: #f59e0b;
+      --header-h: 60px;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.5);
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Inter', system-ui, sans-serif;
     }
-    :root.light{
-      --bg:#fcfcfd; --card:#ffffff; --text:#1f2937; --muted:#4b5563; --brand:#1f6feb; --accent:#059669; --border:#e5e7eb; --shadow:0 8px 24px rgba(0,0,0,.08);
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; background:var(--bg); color:var(--text);}
-    a{color:var(--brand); text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:1060px; margin:0 auto; padding:0 20px}
-    header{position:fixed; top:0; left:0; right:0; z-index:9999; width:100%; backdrop-filter:blur(10px) saturate(1.2); /* fallback for browsers that don't support color-mix */ background: rgba(11,12,16,0.62); border-bottom:1px solid rgba(30,36,48,0.8); /* modern */ background:color-mix(in oklab, var(--bg), transparent 62%); border-bottom:1px solid color-mix(in oklab, var(--border), transparent 20%); box-shadow:0 6px 20px rgba(0,0,0,.18);}  
-    main{padding-top: calc(var(--header-h) + 18px);} 
-    
-    .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
-    .nav a.brand{font-weight:700; letter-spacing:.3px}
-    .nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
-    .actions{display:flex; align-items:center; gap:10px}
-    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border:1px solid var(--border); border-radius:14px; background:linear-gradient(180deg, color-mix(in oklab, var(--card), transparent 10%), var(--card)); box-shadow:var(--shadow); color:var(--text); font-weight:600}
-    .btn:hover{transform:translateY(-1px); transition:transform .15s}
-    .btn.ghost{background:transparent; box-shadow:none}
-    .btn.small{padding:8px 12px; border-radius:12px}
-    .btn.accent{background:linear-gradient(180deg, color-mix(in oklab, var(--brand), white 10%), var(--brand)); color:#fff; border-color:color-mix(in oklab, var(--brand), black 20%)}#toTop{position:fixed; right:22px; bottom:22px; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:var(--card); box-shadow:var(--shadow); display:none; z-index:60}
-    /* Switch toggle */
-    .theme-toggle{display:flex; align-items:center; gap:8px}
-    .switch{position:relative; width:48px; height:26px; display:inline-block}
-    .switch input{opacity:0; width:0; height:0}
-    .switch .slider{position:absolute; inset:0; border-radius:999px; background:color-mix(in oklab, var(--card), white 6%); border:1px solid var(--border); transition:background .2s ease, border-color .2s ease}
-    .switch .slider::before{content:""; position:absolute; height:20px; width:20px; left:3px; top:3px; border-radius:50%; background:var(--text); box-shadow:var(--shadow); transition:transform .2s ease}
-    .switch input:checked + .slider::before{transform:translateX(22px)} 
+    a { color: var(--brand-bright); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
 
-    .hero{display:grid; grid-template-columns:1.15fr .85fr; gap:28px; padding:48px 0 28px}
-    .card{background:var(--card); border:1px solid var(--border); border-radius:20px; padding:22px; box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .15s ease}
-    .card:hover{transform:translateY(-2px); box-shadow:0 14px 34px rgba(0,0,0,.28)}
-    .badges{display:flex; flex-wrap:wrap; gap:10px}
-    .badge{border:1px solid var(--border); padding:6px 10px; border-radius:999px; font-size:.88rem; color:var(--muted)}
-    .highlights{list-style:none; padding-left:0; margin:12px 0 0}
-    .highlights li{position:relative; padding-left:24px; margin:8px 0; line-height:1.5}
-    .highlights li::before{content:"✓"; position:absolute; left:0; top:0; color:var(--accent); font-weight:700}
-    h1{font-size:clamp(28px, 4vw, 42px); margin:6px 0 10px}
-    h2{font-size:clamp(22px, 3vw, 28px); margin:0 0 12px}
-    p.lead{color:var(--muted); font-size:1.05rem; line-height:1.6}
+    /* ── Layout ── */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    main { padding-top: calc(var(--header-h) + 24px); }
+    section { padding: 72px 0 24px; scroll-margin-top: calc(var(--header-h) + 16px); }
 
-    .grid{display:grid; gap:16px}
-    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
-    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
-    @media (max-width:900px){ .hero{grid-template-columns:1fr} .grid.cols-2, .grid.cols-3{grid-template-columns:1fr} }
-
-    section{padding:18px 0 8px}
-    .section-title{display:flex; align-items:center; justify-content:space-between; margin:10px 0 14px}
-    .section-title h2{position:relative; padding-bottom:6px}
-    .section-title h2::after{content:""; position:absolute; left:0; right:0; bottom:0; height:3px; background:linear-gradient(90deg, var(--brand), var(--accent)); border-radius:3px; opacity:.8}
-    .divider{height:1px; background:var(--border); margin:18px 0}
-
-    /* Experience timeline */
-    .timeline{position:relative; padding-left:24px}
-    .timeline::before{content:""; position:absolute; left:10px; top:4px; bottom:4px; width:2px; background:var(--border)}
-    .t-item{position:relative; margin:0 0 18px}
-    .t-item::before{content:""; position:absolute; left:-2px; top:6px; width:12px; height:12px; border:2px solid var(--brand); border-radius:50%; background:var(--card)}
-    .t-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
-    .t-role{font-weight:700}
-    .t-meta{color:var(--muted); font-size:.95rem}
-    .t-body{margin:8px 0 0}
-    .t-body ul{margin:6px 0 0 18px}
-
-    footer{padding:48px 0 64px; color:var(--muted); text-align:center}
-    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
-    /* A11y: focus rings & skip link */
-    :focus-visible{outline:3px solid var(--brand); outline-offset:2px; border-radius:8px}
-    .skip-link{position:absolute; left:12px; top:-40px; background:var(--card); border:1px solid var(--border); padding:8px 12px; border-radius:10px; box-shadow:var(--shadow); z-index:10000}
-    .skip-link:focus{top:10px}
-    /* Inputs */
-    .input{padding:12px 14px; border:1px solid var(--border); border-radius:12px; background:var(--card); color:var(--text); width:100%; display:block}
-    .input:focus{border-color:var(--brand)}
-    textarea.input{min-height:120px; resize:vertical}
-    /* Contact form grid */
-    #contactForm{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px; align-items:start}
-    #contactForm #msg{grid-column:1 / -1}
-    #contactForm button{grid-column:1 / 2; justify-self:start}
-    #formStatus{grid-column:1 / -1; margin-top:6px; color:var(--muted)}
-    @media (max-width:900px){ #contactForm{grid-template-columns:1fr} }
-    @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important} }
-      /* Enhancements: smooth scrolling, avatar image, active nav */
-    html{scroll-behavior:smooth}
-    section{scroll-margin-top:calc(var(--header-h) + 20px)}
-    .avatar{width:100%; height:auto; display:block; border-radius:18px; border:1px solid var(--border); box-shadow:var(--shadow); object-fit:contain} 
-    .nav a.active{color:var(--accent); text-decoration:none; border-bottom:2px solid var(--accent); padding-bottom:4px}
-      /* Mobile header adjustments */
-    @media (max-width:640px){
-      .nav{height:56px}
-      .nav a.brand{font-size:14px}
-      header nav ul{max-width:58vw; overflow-x:auto; white-space:nowrap; gap:14px; padding-bottom:4px; scrollbar-width:none}
-      header nav ul::-webkit-scrollbar{display:none}
-      .actions{gap:6px}
-      .actions .btn.small.ghost{font-size:0; padding:6px 10px}
-      .actions .btn.small.ghost::before{content:'in'; font-size:14px; font-weight:700}
-      .switch{width:44px; height:24px}
-      .switch .slider::before{height:18px; width:18px}
+    /* ── Header ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--header-h);
+      background: rgba(8,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: var(--header-h);
+    }
+    .nav-brand {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--brand-bright);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .nav-brand span { color: var(--muted); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 0.875rem; color: var(--muted); font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); text-decoration: none; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 16px; border-radius: var(--radius-sm);
+      font-size: 0.875rem; font-weight: 600; font-family: var(--sans);
+      border: 1px solid var(--border); background: var(--card);
+      color: var(--text); cursor: pointer; transition: all 0.15s;
+      text-decoration: none;
+    }
+    .btn:hover { border-color: var(--border-bright); background: var(--card-hover); transform: translateY(-1px); text-decoration: none; }
+    .btn-primary { background: var(--brand); border-color: var(--brand); color: #fff; }
+    .btn-primary:hover { background: var(--brand-bright); border-color: var(--brand-bright); }
+    .btn-ghost { background: transparent; border-color: transparent; }
+    .btn-ghost:hover { background: var(--card); border-color: var(--border); }
+    .btn-sm { padding: 6px 12px; font-size: 0.8rem; }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ── Tags / Badges ── */
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      padding: 3px 9px;
+      border-radius: 6px;
+      border: 1px solid var(--border-bright);
+      color: var(--muted);
+      background: rgba(59,130,246,0.06);
+    }
+    .tag.blue { border-color: rgba(59,130,246,0.4); color: var(--brand-bright); background: rgba(59,130,246,0.08); }
+    .tag.cyan { border-color: rgba(6,182,212,0.4); color: var(--accent); background: rgba(6,182,212,0.08); }
+    .tag.green { border-color: rgba(16,185,129,0.4); color: var(--green); background: rgba(16,185,129,0.08); }
+
+    /* ── Section headers ── */
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 32px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 32px;
+      padding: 56px 0 32px;
+      align-items: start;
+    }
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--brand-bright), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-desc {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 28px;
+      max-width: 520px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
+    .hero-stats {
+      display: flex; gap: 32px; padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-val {
+      font-size: 1.6rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--brand-bright), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+    .hero-photo {
+      position: sticky; top: calc(var(--header-h) + 24px);
+    }
+    .hero-photo img {
+      width: 100%; border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-lg);
+    }
+    .status-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 999px;
+      background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3);
+      font-size: 0.8rem; color: var(--green); margin-top: 14px;
+    }
+    .status-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ── Projects ── */
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: all 0.2s;
+      display: flex; flex-direction: column;
+    }
+    .project-card:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    .project-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+      border-color: rgba(59,130,246,0.3);
+    }
+    .project-label {
+      font-family: var(--mono);
+      font-size: 0.7rem; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .project-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+    .project-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.65; flex: 1; }
+    .project-links { display: flex; gap: 10px; margin-top: 18px; }
+    .project-links a {
+      font-family: var(--mono);
+      font-size: 0.75rem; color: var(--muted);
+      border: 1px solid var(--border); padding: 4px 10px;
+      border-radius: 6px; transition: all 0.15s;
+    }
+    .project-links a:hover { color: var(--text); border-color: var(--border-bright); text-decoration: none; }
+    .project-award {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.78rem; color: var(--orange);
+      background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3);
+      padding: 3px 10px; border-radius: 6px; margin-bottom: 10px;
+    }
+    .arch-flow {
+      font-family: var(--mono);
+      font-size: 0.72rem; color: var(--muted);
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px; line-height: 2;
+    }
+    .arch-flow .node { color: var(--brand-bright); }
+    .arch-flow .arrow { color: var(--faint); }
+
+    /* ── Experience ── */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: ""; position: absolute; left: 9px; top: 8px; bottom: 8px;
+      width: 2px; background: linear-gradient(to bottom, var(--brand), var(--accent), transparent);
+    }
+    .t-item {
+      position: relative; margin-bottom: 20px;
+    }
+    .t-item::before {
+      content: ""; position: absolute; left: -23px; top: 20px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--brand); border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+    }
+    .t-role { font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
+    .t-company { color: var(--brand-bright); font-weight: 600; }
+    .t-meta { font-size: 0.82rem; color: var(--muted); margin-bottom: 12px; font-family: var(--mono); }
+    .t-body ul { padding-left: 18px; }
+    .t-body li { font-size: 0.9rem; color: var(--muted); margin-bottom: 6px; line-height: 1.6; }
+    .t-body li strong { color: var(--text); }
+
+    /* ── Skills ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skill-group-title {
+      font-family: var(--mono); font-size: 0.72rem;
+      color: var(--accent); text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 14px;
+    }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-pill {
+      font-size: 0.82rem; padding: 5px 12px; border-radius: 8px;
+      border: 1px solid var(--border); color: var(--muted);
+      background: rgba(255,255,255,0.02);
+    }
+
+    /* ── Education ── */
+    .edu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+    /* ── Certifications ── */
+    .cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .cert-card {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 18px; border-radius: var(--radius-sm);
+      border: 1px solid var(--border); background: var(--card);
+    }
+    .cert-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+      background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2);
+    }
+    .cert-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 3px; }
+    .cert-issuer { font-size: 0.8rem; color: var(--muted); font-family: var(--mono); }
+
+    /* ── Contact ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .input {
+      width: 100%; padding: 11px 14px;
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--surface); color: var(--text);
+      font-family: var(--sans); font-size: 0.9rem;
+    }
+    .input:focus { outline: none; border-color: var(--brand); }
+    textarea.input { min-height: 110px; resize: vertical; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-grid .full { grid-column: 1 / -1; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+    /* ── Footer ── */
+    footer {
+      padding: 48px 0; border-top: 1px solid var(--border);
+      text-align: center; color: var(--faint); font-size: 0.85rem;
+    }
+    footer span { color: var(--muted); }
+
+    /* ── Back to top ── */
+    #toTop {
+      position: fixed; right: 24px; bottom: 24px;
+      width: 40px; height: 40px; border-radius: 10px;
+      border: 1px solid var(--border); background: var(--card);
+      color: var(--muted); font-size: 1rem; cursor: pointer;
+      display: none; align-items: center; justify-content: center;
+      box-shadow: var(--shadow); transition: all 0.15s; z-index: 50;
+    }
+    #toTop:hover { color: var(--text); border-color: var(--border-bright); }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo { display: none; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .edu-grid, .cert-grid, .contact-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .form-grid { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+    :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 6px; }
   </style>
-  <script>
-    // Theme: follow user preference, allow toggle, persist in localStorage
-    (function(){
-      const ls = localStorage.getItem('theme');
-      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-      const initial = ls ? ls : (prefersLight ? 'light' : 'dark');
-      if(initial === 'light'){ document.documentElement.classList.add('light'); }
-    })();
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Ishan Singh",
-    "email": "mailto:ishansingh98@gmail.com",
-    "telephone": "+1-312-285-9350",
-    "url": "https://ishan-singh98.github.io/",
-    "sameAs": ["https://www.linkedin.com/in/ishan-singh-b92697143/"]
-  }
-  </script>
 </head>
 <body>
-  <a href="#contact" class="skip-link">Skip to contact</a>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#home" aria-label="Ishan Singh home">Ishan Singh</a>
-      <nav aria-label="Primary">
-        <ul>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="actions">
-        <a class="btn small ghost" href="https://www.linkedin.com/in/ishan-singh-b92697143/" target="_blank" rel="noopener" aria-label="LinkedIn profile">LinkedIn</a>
-        <div class="theme-toggle" aria-label="Theme toggle">
-          <span aria-hidden="true">🌙</span>
-          <label class="switch">
-            <input type="checkbox" id="themeSwitch" aria-label="Toggle light and dark theme" />
-            <span class="slider"></span>
-          </label>
-          <span aria-hidden="true">☀️</span>
-        </div>
-      </div>
-      </div>
-  </header>
 
-  <main id="home" class="container">
-    <section class="hero">
-      <div class="card">
-        <h1>I make data behave.</h1>
-        <p class="lead">I'm <strong>Ishan Singh</strong>, a data-driven consultant experienced in Oracle Cloud integrations, SQL performance tuning, and data engineering practices. I'm pursuing my M.S. in Business Analytics at the University of Illinois Chicago.</p>
-        <ul class="highlights">
-          <li>Designed and shipped Oracle Cloud integrations (SOAP/REST) and optimized SQL for reliability and speed.</li>
-          <li>Built a RAG + GenAI chatbot that unifies UIC program info with Scrapy, MySQL, Pinecone, and OpenAI.</li>
-          <li>Comfortable interfacing with business & engineering; experienced with Agile delivery and documentation.</li>
-        </ul>
-        <div class="badges" style="margin:16px 0 10px">
-          <span class="badge">SQL</span>
-          <span class="badge">Python</span>
-          <span class="badge">Oracle Cloud (OCI)</span>
-          <span class="badge">APIs (SOAP/REST)</span>
-          <span class="badge">GCP · Dataflow · Beam</span>
-          <span class="badge">UNIX/Shell</span>
-          <span class="badge">Power BI</span>
+<header>
+  <div class="container nav">
+    <a class="nav-brand" href="#home"><span>~/</span>ishan-singh</a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-ghost btn-sm" href="https://www.linkedin.com/in/ishan-singh-b92697143/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost btn-sm" href="https://github.com/ishan-singh98" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-primary btn-sm" href="assets/Ishan_Singh_CV.pdf" download>Resume ↓</a>
+    </div>
+  </div>
+</header>
+
+<main id="home" class="container">
+
+  <!-- ── HERO ── -->
+  <section class="hero" style="padding-top:48px; padding-bottom:16px;">
+    <div>
+      <div class="hero-eyebrow">// Data Engineer · Applied AI · Chicago, IL</div>
+      <h1>Building data systems<br>that <span class="highlight">actually ship.</span></h1>
+      <p class="hero-desc">
+        M.S. Business Analytics (GPA 4.0, UIC '26) with 3 years at Deloitte USI in data engineering, ETL, and Oracle Cloud. Now focused on real-time streaming pipelines, RAG systems, and LLM applications. Open to DE and Applied AI roles — F-1 OPT, STEM extension eligible.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">View Projects</a>
+        <a class="btn" href="assets/Ishan_Singh_CV.pdf" download>Download Resume</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-val">3+</div>
+          <div class="stat-label">Years at Deloitte</div>
         </div>
-        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px">
-          <a class="btn accent" href="assets/Ishan_Singh_CV.pdf" download>
-            <span>⬇️</span> Download Résumé
+        <div>
+          <div class="stat-val">4.0</div>
+          <div class="stat-label">GPA at UIC</div>
+        </div>
+        <div>
+          <div class="stat-val">5+</div>
+          <div class="stat-label">Portfolio Projects</div>
+        </div>
+        <div>
+          <div class="stat-val">🥇</div>
+          <div class="stat-label">Capstone Winner</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="assets/headshot.jpg" alt="Ishan Singh" width="340" height="420" loading="eager" />
+      <div class="status-pill">
+        <div class="status-dot"></div>
+        Open to opportunities
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section id="projects">
+    <div class="section-label">// work</div>
+    <div class="section-title">Projects</div>
+
+    <div class="projects-grid">
+
+      <!-- Featured: Android Risk Intelligence System -->
+      <div class="project-card featured card">
+        <div>
+          <div class="project-award">🥇 1st Place — TransUnion Capstone</div>
+          <div class="project-label">Multi-Agent AI System</div>
+          <div class="project-title">Android Risk Intelligence System</div>
+          <p class="project-desc">
+            Multi-agent RAG platform built for TransUnion to automate Android security bulletin triage. A Sentinel agent classifies incoming CVEs into P0/P1/P2 risk buckets, a Coordinator agent routes and summarizes findings, and a Streamlit dashboard surfaces actionable intelligence. Deployed with GitHub Actions CI/CD and presented at an INFORMS conference.
+          </p>
+          <div class="tags">
+            <span class="tag blue">LangGraph</span>
+            <span class="tag blue">RAG</span>
+            <span class="tag blue">pgvector</span>
+            <span class="tag cyan">Supabase</span>
+            <span class="tag cyan">Streamlit</span>
+            <span class="tag green">GitHub Actions</span>
+            <span class="tag green">Nomic Embeddings</span>
+            <span class="tag">Python</span>
+            <span class="tag">Claude API</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ishan-singh98" target="_blank" rel="noopener">↗ GitHub</a>
+          </div>
+        </div>
+        <div class="arch-flow">
+          <div><span class="node">GitHub Actions</span> <span class="arrow">──→</span> Seed Sources</div>
+          <div><span class="arrow">          ↓</span></div>
+          <div><span class="node">Scraper</span> <span class="arrow">──→</span> Android Bulletins</div>
+          <div><span class="arrow">          ↓</span></div>
+          <div><span class="node">Sentinel Agent</span> <span class="arrow">──→</span> P0/P1/P2 Triage</div>
+          <div><span class="arrow">          ↓</span></div>
+          <div><span class="node">Coordinator Agent</span> <span class="arrow">──→</span> Summary</div>
+          <div><span class="arrow">          ↓</span></div>
+          <div><span class="node">Supabase + pgvector</span> <span class="arrow">──→</span> Dashboard</div>
+        </div>
+      </div>
+
+      <!-- Kafka E-commerce Pipeline -->
+      <div class="project-card card">
+        <div class="project-label">Real-Time Streaming</div>
+        <div class="project-title">Kafka E-commerce Pipeline</div>
+        <p class="project-desc">
+          End-to-end real-time order streaming pipeline. A Python producer generates 2 orders/sec via Faker, Apache Kafka brokers the stream with Zookeeper coordination, a consumer inserts to Supabase, and a live Streamlit dashboard refreshes every 3 seconds with revenue, product, and regional metrics.
+        </p>
+        <div class="tags">
+          <span class="tag blue">Apache Kafka</span>
+          <span class="tag cyan">Docker</span>
+          <span class="tag cyan">Supabase</span>
+          <span class="tag green">Streamlit</span>
+          <span class="tag green">Plotly</span>
+          <span class="tag">Python</span>
+          <span class="tag">Zookeeper</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ishan-singh98/kafka-ecommerce-pipeline" target="_blank" rel="noopener">↗ GitHub</a>
+        </div>
+      </div>
+
+      <!-- UIC RAG Chatbot -->
+      <div class="project-card card">
+        <div class="project-label">RAG · NLP</div>
+        <div class="project-title">UIC Graduate Programs RAG Chatbot</div>
+        <p class="project-desc">
+          Production-style RAG assistant for UIC graduate program FAQs. Scrapy spider crawls program pages, OpenAI embeddings index content in Pinecone, FastAPI serves retrieval-augmented responses, and a Streamlit UI handles real-time Q&A. Reduces search friction for applicants navigating scattered program info.
+        </p>
+        <div class="tags">
+          <span class="tag blue">RAG</span>
+          <span class="tag blue">OpenAI Embeddings</span>
+          <span class="tag cyan">Pinecone</span>
+          <span class="tag cyan">FastAPI</span>
+          <span class="tag green">Scrapy</span>
+          <span class="tag green">Streamlit</span>
+          <span class="tag">MySQL · GCP</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ishan-singh98" target="_blank" rel="noopener">↗ GitHub</a>
+        </div>
+      </div>
+
+      <!-- LLM Fine-tuning -->
+      <div class="project-card card">
+        <div class="project-label">LLM · PyTorch · In Progress</div>
+        <div class="project-title">Personalized Recommendation via LLM Fine-tuning</div>
+        <p class="project-desc">
+          Instruction fine-tuning Llama 3.2 3B using QLoRA on a custom-constructed dataset of 50K+ instruction-response pairs built from Amazon Reviews 2023. Generates explainable, personalized product recommendations. Evaluated with ROUGE-L and perplexity metrics vs base model. Model hosted on Hugging Face Hub.
+        </p>
+        <div class="tags">
+          <span class="tag blue">PyTorch</span>
+          <span class="tag blue">QLoRA</span>
+          <span class="tag blue">Llama 3.2</span>
+          <span class="tag cyan">Hugging Face</span>
+          <span class="tag cyan">PEFT</span>
+          <span class="tag green">W&B</span>
+          <span class="tag">bitsandbytes</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ishan-singh98" target="_blank" rel="noopener">↗ GitHub</a>
+        </div>
+      </div>
+
+      <!-- Loan Default Prediction -->
+      <div class="project-card card">
+        <div class="project-label">Machine Learning · UIC</div>
+        <div class="project-title">Loan Default Prediction & Investment Strategy</div>
+        <p class="project-desc">
+          Predicted loan defaults on a P2P lending platform using Decision Tree, Random Forest, and Gradient Boosting models. Addressed class imbalance, evaluated with AUC/ROC and Lift curves, and ran investment simulations comparing model-based returns vs baseline options.
+        </p>
+        <div class="tags">
+          <span class="tag blue">scikit-learn</span>
+          <span class="tag blue">Random Forest</span>
+          <span class="tag cyan">GBM</span>
+          <span class="tag green">AUC/ROC</span>
+          <span class="tag">Python · pandas</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ── -->
+  <section id="experience">
+    <div class="section-label">// career</div>
+    <div class="section-title">Experience</div>
+    <div class="timeline">
+
+      <article class="t-item card">
+        <div class="t-role">Consultant <span style="color:var(--faint)">·</span> <span class="t-company">Deloitte USI</span></div>
+        <div class="t-meta">Apr 2024 – Aug 2024 · Hyderabad, India</div>
+        <div class="t-body">
+          <ul>
+            <li>Designed and implemented inbound/outbound <strong>Oracle Cloud integrations</strong> via SOAP/REST, ensuring 100% accurate data flow; led integration and system testing using SOAP UI and Postman.</li>
+            <li>Tuned complex SQL queries achieving <strong>~20% runtime reduction</strong>; ran peer code reviews and mentored 3 junior analysts, improving team delivery speed by 15%.</li>
+            <li>Coordinated Agile Scrum ceremonies and cross-functional collaboration to meet delivery timelines.</li>
+          </ul>
+        </div>
+        <div class="tags" style="margin-top:14px">
+          <span class="tag">Oracle Cloud</span><span class="tag">SOAP/REST</span><span class="tag">SQL</span><span class="tag">SOAP UI</span><span class="tag">Agile</span>
+        </div>
+      </article>
+
+      <article class="t-item card">
+        <div class="t-role">Analyst <span style="color:var(--faint)">·</span> <span class="t-company">Deloitte USI</span></div>
+        <div class="t-meta">May 2021 – May 2024 · Hyderabad, India</div>
+        <div class="t-body">
+          <ul>
+            <li>Led data modeling and SQL development for BIP reports and integrations across finance modules — Project Costing, Fixed Assets, Procurement, AP, OTL.</li>
+            <li>Validated pipelines migrating <strong>5TB of data</strong> from Teradata to GCP using <strong>Dataflow and Apache Beam</strong>, ensuring 99.99% data accuracy and zero data loss during UAT.</li>
+            <li>Managed <strong>ETL scheduling via BICC</strong>, improving data refresh times by 25%; tracked and resolved 100% of high-priority issues pre-release via JIRA and ServiceNow.</li>
+            <li>Enhanced Oracle BRM via pipeline changes, iScripts, and shell scripts — improved accuracy and reduced defects by 18%.</li>
+          </ul>
+        </div>
+        <div class="tags" style="margin-top:14px">
+          <span class="tag">GCP</span><span class="tag">Apache Beam</span><span class="tag">Dataflow</span><span class="tag">Oracle Fusion</span><span class="tag">BICC</span><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Teradata</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ── SKILLS ── -->
+  <section id="skills">
+    <div class="section-label">// stack</div>
+    <div class="section-title">Skills</div>
+    <div class="skills-grid">
+      <div class="card">
+        <div class="skill-group-title">Data Engineering</div>
+        <div class="skill-list">
+          <span class="skill-pill">Apache Kafka</span>
+          <span class="skill-pill">Apache Airflow</span>
+          <span class="skill-pill">Apache Beam</span>
+          <span class="skill-pill">PySpark</span>
+          <span class="skill-pill">dbt</span>
+          <span class="skill-pill">GCP Dataflow</span>
+          <span class="skill-pill">BigQuery</span>
+          <span class="skill-pill">Docker</span>
+          <span class="skill-pill">GitHub Actions</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="skill-group-title">AI / ML</div>
+        <div class="skill-list">
+          <span class="skill-pill">LangGraph</span>
+          <span class="skill-pill">LangChain</span>
+          <span class="skill-pill">RAG</span>
+          <span class="skill-pill">PyTorch</span>
+          <span class="skill-pill">QLoRA / PEFT</span>
+          <span class="skill-pill">Hugging Face</span>
+          <span class="skill-pill">pgvector</span>
+          <span class="skill-pill">Pinecone</span>
+          <span class="skill-pill">Nomic Embeddings</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="skill-group-title">Languages & Databases</div>
+        <div class="skill-list">
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">R</span>
+          <span class="skill-pill">PostgreSQL</span>
+          <span class="skill-pill">Supabase</span>
+          <span class="skill-pill">MySQL</span>
+          <span class="skill-pill">Oracle SQL/PL</span>
+          <span class="skill-pill">UNIX/Linux</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="skill-group-title">APIs & Integration</div>
+        <div class="skill-list">
+          <span class="skill-pill">FastAPI</span>
+          <span class="skill-pill">REST / SOAP</span>
+          <span class="skill-pill">Oracle OIC</span>
+          <span class="skill-pill">Oracle BIP/BICC</span>
+          <span class="skill-pill">Claude API</span>
+          <span class="skill-pill">OpenAI API</span>
+          <span class="skill-pill">MCP</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="skill-group-title">Visualization & Dashboards</div>
+        <div class="skill-list">
+          <span class="skill-pill">Streamlit</span>
+          <span class="skill-pill">Plotly</span>
+          <span class="skill-pill">Power BI</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="skill-group-title">Workflow & Collaboration</div>
+        <div class="skill-list">
+          <span class="skill-pill">Agile / Scrum</span>
+          <span class="skill-pill">JIRA</span>
+          <span class="skill-pill">ServiceNow</span>
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">Postman / SOAP UI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EDUCATION ── -->
+  <section id="education">
+    <div class="section-label">// education</div>
+    <div class="section-title">Education</div>
+    <div class="edu-grid">
+      <div class="card">
+        <div class="project-label">May 2026</div>
+        <div class="project-title">M.S. Business Analytics</div>
+        <div style="color:var(--brand-bright); font-weight:600; margin-bottom:10px;">University of Illinois Chicago</div>
+        <p style="color:var(--muted); font-size:0.9rem; margin-bottom:12px;"><strong style="color:var(--green)">GPA: 4.0 / 4.0</strong></p>
+        <p style="color:var(--muted); font-size:0.85rem; line-height:1.7;">ML & Statistics · Data Mining · Analytics for Big Data · MLOps · Reinforcement Learning · Advanced Database Management · Business Forecasting</p>
+        <div class="tags">
+          <span class="tag green">4.0 GPA</span>
+          <span class="tag blue">Capstone Winner 🥇</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="project-label">May 2020</div>
+        <div class="project-title">B.Tech — Electronics & Communications</div>
+        <div style="color:var(--brand-bright); font-weight:600; margin-bottom:10px;">SRM University, Chennai</div>
+        <p style="color:var(--muted); font-size:0.85rem; line-height:1.7;">Statistics · Embedded Systems · Signals & Systems · Microprocessors & Microcontrollers</p>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div style="margin-top:24px;">
+      <div style="font-size:0.9rem; color:var(--muted); margin-bottom:16px; font-weight:600;">Certifications</div>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-icon">☁️</div>
+          <div>
+            <div class="cert-name">OCI 2025 Generative AI Professional</div>
+            <div class="cert-issuer">Oracle Cloud Infrastructure</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">⚡</div>
+          <div>
+            <div class="cert-name">Data Streaming Engineer Foundations</div>
+            <div class="cert-issuer">Confluent · Apache Kafka</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <div class="section-label">// contact</div>
+    <div class="section-title">Get in touch</div>
+    <div class="contact-grid">
+      <div class="card">
+        <h3 style="font-size:1.1rem; margin-bottom:8px;">Let's talk</h3>
+        <p style="color:var(--muted); font-size:0.9rem; line-height:1.7; margin-bottom:20px;">
+          Open to Data Engineering and Applied AI roles in Chicago and across the US. F-1 OPT with STEM extension eligibility, H-1B sponsorship required.
+        </p>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;">
+          <a href="mailto:ishansingh98@gmail.com" style="color:var(--text); display:flex; align-items:center; gap:8px; font-size:0.9rem;">
+            <span style="color:var(--accent)">✉</span> ishansingh98@gmail.com
           </a>
-          <a class="btn ghost" href="#contact">✉️ Email me</a>
-                    <a class="btn ghost" href="#projects">🚀 Projects</a>
-          <a class="btn ghost" href="#experience">💼 Experience</a>
+          <a href="tel:+13122859350" style="color:var(--text); display:flex; align-items:center; gap:8px; font-size:0.9rem;">
+            <span style="color:var(--accent)">📞</span> +1 (312) 285-9350
+          </a>
+          <a href="https://www.linkedin.com/in/ishan-singh-b92697143/" target="_blank" rel="noopener" style="color:var(--text); display:flex; align-items:center; gap:8px; font-size:0.9rem;">
+            <span style="color:var(--accent)">in</span> LinkedIn Profile
+          </a>
+          <a href="https://github.com/ishan-singh98" target="_blank" rel="noopener" style="color:var(--text); display:flex; align-items:center; gap:8px; font-size:0.9rem;">
+            <span style="color:var(--accent)">⌥</span> github.com/ishan-singh98
+          </a>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn btn-sm" id="copyEmail">Copy email</button>
+          <a id="vcardLink" class="btn btn-ghost btn-sm" download="Ishan_Singh.vcf">Download vCard</a>
         </div>
       </div>
       <div class="card">
-        <img src="assets/headshot.jpg" alt="Ishan Singh headshot" class="avatar" width="640" height="800" loading="eager" fetchpriority="high" decoding="async" />
-        <div class="divider"></div>
-        <h2>At a glance</h2>
-        <ul style="margin:0 0 0 18px; line-height:1.7">
-          <li>3+ years at Deloitte USI delivering data & integration solutions across finance modules.</li>
-          <li>Hands-on with end‑to‑end data pipelines, BRM enhancements, and BICC‑driven ETL.</li>
-          <li>Comfortable collaborating across business & IT; practiced in Agile/Scrum.</li>
-          <li>Currently deepening analytics & ML skills at UIC.</li>
-        </ul>
-        <div class="divider"></div>
-        <h2>Focus areas</h2>
-        <div class="badges">
-          <span class="badge">Data Engineering</span>
-          <span class="badge">Machine Learning</span>
-          <span class="badge">RAG / GenAI</span>
-          <span class="badge">ETL & Integrations</span>
-          <span class="badge">Data Visualization</span>
-          <span class="badge">Stakeholder Communication</span>
-          <span class="badge">Cross‑functional Collaboration</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience">
-      <div class="section-title">
-        <h2>Experience</h2>
-      </div>
-      <div class="timeline">
-        <article class="t-item card">
-          <div class="t-head">
-            <div class="t-role">Consultant — Deloitte USI, Hyderabad</div>
-            <div class="t-meta">Apr 2024 – Aug 2024</div>
+        <form id="contactForm" action="https://formspree.io/f/mblkbpqb" method="POST" novalidate>
+          <div class="form-grid">
+            <div>
+              <label class="sr-only" for="name">Name</label>
+              <input id="name" name="name" class="input" type="text" placeholder="Your name" required>
+            </div>
+            <div>
+              <label class="sr-only" for="email">Email</label>
+              <input id="email" name="email" class="input" type="email" placeholder="you@example.com" required>
+            </div>
+            <div class="full">
+              <label class="sr-only" for="msg">Message</label>
+              <textarea id="msg" name="message" class="input" placeholder="Tell me about the opportunity..."></textarea>
+            </div>
+            <div class="full" style="display:flex; align-items:center; gap:12px;">
+              <button class="btn btn-primary" type="submit">Send message</button>
+              <div id="formStatus" aria-live="polite" style="font-size:0.85rem; color:var(--green);"></div>
+            </div>
           </div>
-          <div class="t-body">
-            <ul>
-              <li>Designed and implemented inbound/outbound Oracle Cloud integrations via SOAP/REST; ensured 100% accurate data flow across platforms; led integration & system testing using SOAP UI and Postman.</li>
-              <li>Tuned complex SQL queries achieving ~20% runtime reduction; ran peer code reviews, mentored 3 junior analysts, improved team delivery speed by 15%, and resolved UAT/production defects.</li>
-              <li>Coordinated Agile Scrum ceremonies and cross‑functional collaboration to meet delivery timelines.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="t-item card">
-          <div class="t-head">
-            <div class="t-role">Analyst — Deloitte USI, Hyderabad</div>
-            <div class="t-meta">May 2021 – May 2024</div>
-          </div>
-          <div class="t-body">
-            <ul>
-              <li>Led data modeling & SQL development for BIP reports and integrations across finance modules (Project Costing, Fixed Assets, Procurement, AP, OTL).</li>
-              <li>Authored design docs (business context diagrams, lean specs) and drove review cycles with business & IT stakeholders, reducing rework by 10%.</li>
-              <li>Validated pipelines migrating 5TB of data from Teradata to GCP using Dataflow & Apache Beam, ensuring 99.99% data accuracy and zero data loss during UAT.</li>
-              <li>Delivered JSON/XML to downstream consumers and partnered with teams for seamless integrations.</li>
-              <li>Enhanced Oracle BRM (currency conversion) via pipeline changes, iScripts & shell scripts—improved accuracy and reduced defects by 18%.</li>
-              <li>Managed ETL scheduling via BICC, improving data refresh times by 25%; tracked & resolved 100% of high‑priority issues with JIRA and ServiceNow pre‑release.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="t-item card">
-          <div class="t-head">
-            <div class="t-role">Business Development Associate — BYJU'S, New Delhi</div>
-            <div class="t-meta">Jun 2020 – Nov 2020</div>
-          </div>
-          <div class="t-body">
-            <ul>
-              <li>Generated new client leads and closed high‑value deals, consistently exceeding monthly sales targets by ~15%.</li>
-              <li>Delivered tailored product presentations to diverse customer segments, improving engagement and conversion rates.</li>
-            </ul>
-          </div>
-        </article>
+        </form>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="projects">
-      <div class="section-title"><h2>Projects</h2></div>
-      <div class="grid cols-2">
-        <article class="card">
-          <h3>Loan Default Prediction & Investment Strategy (UIC)</h3>
-          <p class="lead">Developed models to predict loan defaults on a peer‑to‑peer lending platform and guide investment decisions.</p>
-          <ul style="margin:6px 0 0 18px; line-height:1.7">
-            <li>Conducted EDA to uncover insights by demographics and behavior.</li>
-            <li>Addressed class imbalance for better prediction accuracy.</li>
-            <li>Analyzed loan data by grade, borrower attributes, and purpose to identify default risks.</li>
-            <li>Created models (Decision Tree, Random Forest, GBM) to classify loans and assess profitability.</li>
-            <li>Conducted investment simulations, comparing model‑based returns to baseline options.</li>
-          </ul>
-          <p class="lead" style="margin-top:6px"><strong>Result:</strong> Provided data‑driven insights to support profitable lending decisions and mitigate default risks.</p>
-          <div class="badges" style="margin-top:8px"><span class="badge">Decision Tree</span><span class="badge">Random Forest</span><span class="badge">GBM</span><span class="badge">AUC/ROC</span><span class="badge">Lift</span></div>
-        </article>
+</main>
 
-        <article class="card">
-          <h3>UIC Graduate Programs RAG Chatbot</h3>
-          <p class="lead">A production-style Retrieval‑Augmented Generation assistant for UIC graduate programs.</p>
-          <ul style="margin:6px 0 0 18px; line-height:1.7">
-            <li><strong>Problem:</strong> Applicants needed fast, accurate answers about deadlines, credit hours, and requirements scattered across many pages.</li>
-            <li><strong>Solution:</strong> Scrapy spider → MySQL on GCP → OpenAI embeddings → Pinecone index with program‑scoped retrieval → FastAPI backend + Streamlit UI.</li>
-            <li><strong>Impact:</strong> Consolidated program info into a single chat interface; reduced search friction and response time for common FAQs.</li>
-          </ul>
-          <div class="badges" style="margin-top:8px"><span class="badge">Python</span><span class="badge">Scrapy</span><span class="badge">MySQL</span><span class="badge">RAG</span><span class="badge">Pinecone</span><span class="badge">OpenAI API</span><span class="badge">FastAPI</span></div>
-          
-        </article>
-      </div>
-    </section>
+<button id="toTop" aria-label="Back to top">↑</button>
 
-    <section id="education">
-      <div class="section-title"><h2>Education</h2></div>
-      <div class="grid cols-2">
-        <article class="card">
-          <h3>University of Illinois Chicago</h3>
-          <p class="lead">M.S. — Business Analytics (2024 – Present)</p>
-          <ul style="margin:6px 0 0 18px; line-height:1.7">
-            <li><strong>GPA:</strong> <em>4.00/4.00</em></li>
-            <li><strong>Selected Coursework:</strong> Advanced Database Management; Machine Learning &amp; Statistics; Data Mining for Business; Analytics for Big Data; Reinforcement Learning; Business Data Visualization.</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>SRM University, Chennai</h3>
-          <p class="lead">B.Tech — Electronics & Communications Engineering (2016 – 2020)</p>
-          <ul style="margin:6px 0 0 18px; line-height:1.7">
-            <li><strong>Selected Coursework:</strong> Statistics, Embedded Systems, Signals & Systems, Microprocessors.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
+<footer>
+  <div class="container">
+    <p>Built by <span>Ishan Singh</span> · <span>Chicago, IL</span> · <span>Open to work</span></p>
+  </div>
+</footer>
 
-    <section id="skills">
-      <div class="section-title"><h2>Skills</h2></div>
-      <div class="card">
-        <ul style="margin:0 0 0 18px; line-height:1.9">
-          <li><strong>Technical Skills:</strong> Python, SQL, Oracle Cloud Infrastructure (OCI), Oracle SQL &amp; PL/SQL, GCP (Google Cloud Platform), SOAP UI, Postman, UNIX/Linux, Power BI, MS Excel, ServiceNow, JIRA, R Language, Teradata, Dataflow, Apache Beam.</li>
-          <li><strong>Data Engineering:</strong> Data Pipelines, Data Analytics Tools, Database Management, Data Modeling, Data Analysis.</li>
-          <li><strong>Project &amp; Management:</strong> Technology Consulting, Client Stakeholder Management, Cross‑functional Collaboration, Technical Communication, Problem Solving, Business Analysis, Agile &amp; SDLC, Project Management, API Integration, CRM, System Design &amp; Documentation.</li>
-        </ul>
-      </div>
-    </section>
+<script>
+  // Copy email
+  document.getElementById('copyEmail').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText('ishansingh98@gmail.com');
+      const btn = document.getElementById('copyEmail');
+      const prev = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = prev, 1500);
+    } catch (_) {}
+  });
 
-    <section id="contact">
-      <div class="section-title"><h2>Contact</h2></div>
-      <div class="grid">
-        <article class="card">
-          <h3>Let's talk</h3>
-          <p class="lead">Interested in collaborating or have an opportunity that matches my background? Reach out:</p>
-          <p><strong>Email:</strong> <a id="emailLink" href="mailto:ishansingh98@gmail.com">ishansingh98@gmail.com</a></p>
-          <p><strong>Phone:</strong> <a href="tel:+13122859350">+1 (312) 285‑9350</a></p>
-          <div style="display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 16px">
-            <button class="btn small" id="copyEmail">Copy email</button>
-            <a id="vcardLink" class="btn small ghost" download="Ishan_Singh.vcf">Download vCard</a>
-          </div>
-          <div class="divider"></div>
-          <form id="contactForm" action="https://formspree.io/f/mblkbpqb" method="POST" novalidate>
-            <label class="sr-only" for="name">Name</label>
-            <input id="name" name="name" class="input" type="text" placeholder="Your name" required>
-            <label class="sr-only" for="email">Email</label>
-            <input id="email" name="email" class="input" type="email" placeholder="you@example.com" required>
-            <label class="sr-only" for="msg">Message</label>
-            <textarea id="msg" name="message" class="input" placeholder="How can I help?"></textarea>
-            <button class="btn" type="submit">Send</button>
-            <div id="formStatus" aria-live="polite" class="sr-only"></div>
-            
-          </form>
-        </article>
-        
-      </div>
-    </section>
+  // vCard
+  const vcard = `BEGIN:VCARD\nVERSION:4.0\nN:Singh;Ishan;;;\nFN:Ishan Singh\nTITLE:Data Engineer & AI Builder\nEMAIL:ishansingh98@gmail.com\nTEL;TYPE=cell,voice:+1-312-285-9350\nURL:https://ishan-singh98.github.io/\nEND:VCARD`;
+  const vlink = document.getElementById('vcardLink');
+  if (vlink) vlink.href = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcard);
 
-    
-    <button id="toTop" class="btn small" aria-label="Back to top">↑ Top</button>
-  </main>
+  // Back to top
+  const toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', () => {
+    toTop.style.display = window.scrollY > 400 ? 'flex' : 'none';
+  });
+  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  <script>
-        document.getElementById('copyEmail').addEventListener('click', async () => {
+  // Scrollspy
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const link = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+  sections.forEach(s => observer.observe(s));
+
+  // Form
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = document.getElementById('formStatus');
       try {
-        await navigator.clipboard.writeText('ishansingh98@gmail.com');
-        const btn = document.getElementById('copyEmail');
-        const prev = btn.textContent; btn.textContent = 'Copied!';
-        setTimeout(()=> btn.textContent = prev, 1200);
-      } catch (_) {}
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+        if (res.ok) { form.reset(); status.textContent = '✓ Message sent!'; }
+        else { status.style.color = 'var(--orange)'; status.textContent = 'Something went wrong — email me directly.'; }
+      } catch (_) { status.style.color = 'var(--orange)'; status.textContent = 'Network error — email me directly.'; }
     });
-    (function(){
-      const el = document.getElementById('themeSwitch');
-      if(!el) return;
-      // set initial state based on class
-      el.checked = document.documentElement.classList.contains('light');
-      el.addEventListener('change', (e) => {
-        const setLight = e.target.checked;
-        document.documentElement.classList.toggle('light', setLight);
-        localStorage.setItem('theme', setLight ? 'light' : 'dark');
-      });
-    })();
-      
-    // Scrollspy: highlight nav item & update hash as sections enter viewport
-    const sections = document.querySelectorAll('main section[id]');
-    const navLinks = document.querySelectorAll('header nav a[href^="#"]');
-    const linkMap = new Map([...navLinks].map(l => [l.getAttribute('href').slice(1), l]));
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(l => l.classList.remove('active'));
-          const link = linkMap.get(entry.target.id);
-          if (link) {
-            link.classList.add('active');
-            history.replaceState(null, '', '#' + entry.target.id);
-            navLinks.forEach(l => l.removeAttribute('aria-current'));
-            const act = linkMap.get(entry.target.id); if (act) act.setAttribute('aria-current','true');
-          }
-        }
-      });
-    }, {rootMargin: '-40% 0px -55% 0px', threshold: 0.01});
-    sections.forEach(s => observer.observe(s));
-    
-
-    // Back-to-top visibility
-    const toTop = document.getElementById('toTop');
-    const headerEl = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY || document.documentElement.scrollTop;
-      toTop.style.display = y > 450 ? 'inline-flex' : 'none';
-      
-    });
-    toTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
-
-    // Build vCard link dynamically (works without extra files)
-    const vcard = `BEGIN:VCARD
-VERSION:4.0
-N:Singh;Ishan;;;
-FN:Ishan Singh
-TITLE:MSBA Candidate
-EMAIL:ishansingh98@gmail.com
-TEL;TYPE=cell,voice:+1-312-285-9350
-URL:https://ishan-singh98.github.io/
-END:VCARD`;
-    const vlink = document.getElementById('vcardLink');
-    if (vlink) { vlink.href = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcard); }
-
-    // Optional AJAX submit for Formspree (stays on page)
-    const form = document.getElementById('contactForm');
-    if(form){
-      form.addEventListener('submit', async (e) => {
-        const status = document.getElementById('formStatus');
-                e.preventDefault();
-        try{
-          const data = new FormData(form);
-          const res = await fetch(form.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } });
-          if(res.ok){ form.reset(); status.classList.remove('sr-only'); status.textContent = 'Thanks! Your message was sent.'; }
-          else{ status.classList.remove('sr-only'); status.textContent = 'Hmm, something went wrong. Please email me directly.'; }
-        }catch(_){ status.classList.remove('sr-only'); status.textContent = 'Network error. Please email me directly.'; }
-      });
-    }
-  </script>
+  }
+</script>
 </body>
 </html>
