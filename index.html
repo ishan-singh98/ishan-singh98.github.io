@@ -39,12 +39,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16
 
 /* subtle grid backdrop */
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(34,211,238,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(34,211,238,.025) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0}
+/* ambient dataflow canvas — the signature */
+#dataflow{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.9}
 main,header,footer{position:relative;z-index:1}
 
 a{color:var(--cyan);text-decoration:none}
 a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
 
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.wrap{max-width:1400px;margin:0 auto;padding:0 48px}
 
 /* ===== NAV ===== */
 nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(7,11,18,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
@@ -60,11 +62,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(7,11,18,.82);
 @media(max-width:760px){.nav-links{display:none}}
 
 /* ===== HERO ===== */
-.hero{padding:130px 0 70px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-@media(max-width:920px){.hero{grid-template-columns:1fr;padding-top:110px}}
+.hero{padding:88px 0 60px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:920px){.hero{grid-template-columns:1fr;padding-top:80px}}
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);margin-bottom:18px}
 .hero h1{font-family:var(--display);font-size:clamp(38px,5.2vw,58px);font-weight:700;color:var(--text-bright);line-height:1.08;letter-spacing:-.02em;margin-bottom:18px}
-.hero h1 .accent{color:var(--cyan)}
+.hero h1 .accent{background:linear-gradient(120deg,#22d3ee,#60a5fa 55%,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--cyan)}
+/* readability scrim so the animated graph never fights the copy */
+.hero > div:first-child{position:relative}
+.hero > div:first-child::before{content:'';position:absolute;inset:-30px -60px -30px -40px;background:radial-gradient(ellipse at 30% 45%,rgba(7,11,18,.92),rgba(7,11,18,.55) 60%,transparent);z-index:-1;pointer-events:none}
 .hero .sub{font-size:17px;color:var(--text-dim);max-width:480px;margin-bottom:28px}
 .hero .sub strong{color:var(--text);font-weight:500}
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
@@ -76,15 +81,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(7,11,18,.82);
 .hero-meta .dot{color:var(--green)}
 
 /* photo card */
-.photo-card{background:var(--bg-terminal);border:1px solid var(--border-bright);border-radius:12px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.55),0 0 0 1px rgba(34,211,238,.06);max-width:420px;justify-self:end}
-@media(max-width:920px){.photo-card{justify-self:center;max-width:360px}}
+.photo-card{background:var(--bg-terminal);border:1px solid var(--border-bright);border-radius:12px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.55),0 0 0 1px rgba(34,211,238,.06);max-width:480px;width:100%;justify-self:end}
+@media(max-width:920px){.photo-card{justify-self:center;max-width:400px}}
 .term-bar{display:flex;align-items:center;gap:8px;padding:11px 15px;background:#0b121f;border-bottom:1px solid var(--border);font-family:var(--mono)}
 .term-bar .tdot{width:11px;height:11px;border-radius:50%}
 .term-bar .tdot:nth-child(1){background:#ff5f57}.term-bar .tdot:nth-child(2){background:#febc2e}.term-bar .tdot:nth-child(3){background:#28c840}
 .term-bar .title{margin-left:10px;font-size:12px;color:var(--text-dim)}
 .photo-frame{position:relative;padding:14px 14px 0}
-.photo-frame img{display:block;width:100%;aspect-ratio:4/4.6;object-fit:cover;border-radius:8px;border:1px solid var(--border);filter:saturate(.95)}
-.photo-caption{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;font-family:var(--mono);font-size:12.5px;color:var(--text)}
+.photo-frame img{display:block;width:100%;aspect-ratio:1/1.12;object-fit:cover;object-position:center top;border-radius:8px;border:1px solid var(--border);filter:saturate(.97)}
+.photo-caption{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 16px;font-family:var(--mono);font-size:12.5px;color:var(--text)}
 
 /* ===== SECTIONS ===== */
 section{padding:76px 0}
@@ -210,6 +215,7 @@ footer{border-top:1px solid var(--border);padding:26px 0;margin-top:30px}
 </style>
 </head>
 <body>
+<canvas id="dataflow" aria-hidden="true"></canvas>
 
 <nav>
   <div class="nav-inner">
@@ -245,7 +251,6 @@ footer{border-top:1px solid var(--border);padding:26px 0;margin-top:30px}
     <div class="photo-card">
       <div class="term-bar">
         <span class="tdot"></span><span class="tdot"></span><span class="tdot"></span>
-        <span class="title">ishan_singh.jpg</span>
       </div>
       <div class="photo-frame">
         <img src="assets/headshot.jpg" alt="Ishan Singh">
@@ -276,7 +281,7 @@ footer{border-top:1px solid var(--border);padding:26px 0;margin-top:30px}
           <span class="tag t-blue">LangGraph</span><span class="tag t-blue">RAG</span><span class="tag t-cyan">pgvector</span><span class="tag t-cyan">Supabase</span><span class="tag t-green">Streamlit</span><span class="tag t-green">GitHub Actions</span><span class="tag t-green">Nomic Embeddings</span><span class="tag t-grey">Python</span><span class="tag t-grey">Claude API</span>
         </div>
         <div class="proj-links">
-          <a class="plink" href="https://github.com/ishansingh98" target="_blank" rel="noopener">↗ GitHub</a>
+          <a class="plink" href="https://github.com/ishan-singh98/android-risk-intelligence-system" target="_blank" rel="noopener">↗ GitHub</a>
         </div>
       </div>
       <div class="pipeline" id="pipelineDiagram" aria-hidden="true">
@@ -305,7 +310,7 @@ footer{border-top:1px solid var(--border);padding:26px 0;margin-top:30px}
         <div class="tags">
           <span class="tag t-blue">Apache Kafka</span><span class="tag t-blue">Docker</span><span class="tag t-cyan">Supabase</span><span class="tag t-green">Streamlit</span><span class="tag t-green">Plotly</span><span class="tag t-grey">Python</span><span class="tag t-grey">Zookeeper</span>
         </div>
-        <div class="proj-links"><a class="plink" href="https://github.com/ishansingh98" target="_blank" rel="noopener">↗ GitHub</a></div>
+        <div class="proj-links"><a class="plink" href="https://github.com/ishan-singh98/kafka-ecommerce-pipeline" target="_blank" rel="noopener">↗ GitHub</a></div>
       </article>
 
       <!-- RAG chatbot -->
@@ -316,7 +321,6 @@ footer{border-top:1px solid var(--border);padding:26px 0;margin-top:30px}
         <div class="tags">
           <span class="tag t-blue">RAG</span><span class="tag t-blue">OpenAI Embeddings</span><span class="tag t-cyan">Pinecone</span><span class="tag t-cyan">FastAPI</span><span class="tag t-green">Scrapy</span><span class="tag t-green">Streamlit</span><span class="tag t-grey">GCP</span>
         </div>
-        <div class="proj-links"><a class="plink" href="https://github.com/ishansingh98" target="_blank" rel="noopener">↗ GitHub</a></div>
       </article>
 
       <!-- Loan default -->
@@ -336,7 +340,6 @@ footer{border-top:1px solid var(--border);padding:26px 0;margin-top:30px}
         <div class="tags">
           <span class="tag t-blue">scikit-learn</span><span class="tag t-blue">Random Forest</span><span class="tag t-cyan">GBM</span><span class="tag t-green">AUC/ROC</span><span class="tag t-grey">Python · pandas</span>
         </div>
-        <div class="proj-links"><a class="plink" href="https://github.com/ishansingh98" target="_blank" rel="noopener">↗ GitHub</a></div>
       </article>
 
       <!-- Migration / Deloitte highlight as a "system" card -->
@@ -365,9 +368,9 @@ footer{border-top:1px solid var(--border);padding:26px 0;margin-top:30px}
           <h3>Consultant, Data Engineering</h3>
           <div class="org">Deloitte USI · Hyderabad, India</div>
           <ul>
-            <li>Designed and deployed scalable pipelines for enterprise clients — improved pipeline validation accuracy <strong>30%</strong> with Python automation and SQL data quality checks.</li>
-            <li>Built ELT/ETL workflows with parsers, validators, and transformers; implemented CI/CD with GitHub Actions for automated deployments.</li>
-            <li>Acted as translator between IT and business teams — led code reviews and mentored junior engineers on platform standards.</li>
+            <li>Owned end-to-end data pipeline delivery for enterprise clients — designed scalable ingestion-to-visualization pipelines across Oracle Fusion platforms, improved validation accuracy <strong>30%</strong> using Python automation and SQL quality checks, and acted as liaison between technical and non-technical teams to align data solutions with business objectives.</li>
+            <li>Built automation and developer tooling to accelerate pipeline deployments and ensure data reliability — implemented CI/CD with GitHub Actions, and maintained data documentation and definitions so source-of-truth tables stayed high quality for analytics applications.</li>
+            <li>Collaborated with business and operations stakeholders to understand data needs and translate them into efficient, scalable solutions — set standards for data quality and expectations, and delivered Tableau and Oracle BIP dashboards enabling self-serve analytics.</li>
           </ul>
         </div>
         <div class="t-item">
@@ -375,10 +378,12 @@ footer{border-top:1px solid var(--border);padding:26px 0;margin-top:30px}
           <h3>Analyst, Data Engineering</h3>
           <div class="org">Deloitte USI · Hyderabad, India</div>
           <ul>
-            <li>Built highly scalable batch pipelines on GCP (Python, SQL, Cloud Composer/Airflow, PySpark) — <strong>1M+ daily records across 20+ production pipelines</strong> from Oracle Fusion into BigQuery.</li>
-            <li>Optimized BigQuery models with partitioning and query tuning; monitored platform health and GCP cost-effectiveness.</li>
-            <li>Validated a <strong>5TB Teradata-to-GCP migration</strong> with Apache Beam at 99.99% accuracy; provided L3 production support.</li>
-            <li>Cut release cycle time <strong>20%</strong> and QA effort <strong>40%</strong> through CI/CD automation with GitHub Actions and Jenkins.</li>
+            <li>Designed and built scalable data models and ETL/ELT pipelines using Python, SQL, Apache Airflow, and PySpark on GCP — integrated data from Oracle Fusion (AP, AR, SCM, Procurement) and external sources, processing <strong>1M+ daily records</strong> reliably across <strong>20+ production pipelines</strong>.</li>
+            <li>Maintained data documentation, definitions, and lineage tracking so source-of-truth tables stayed high quality for downstream analytics and reporting — applied best practices in data management ensuring reliability and robustness across the full analytics lifecycle.</li>
+            <li>Validated a <strong>5TB Teradata-to-GCP migration</strong> using Apache Beam at <strong>99.99% accuracy</strong> — built reusable data quality frameworks and set company-wide standards for data structure, quality, and expectations across production systems.</li>
+            <li>Reduced pipeline release cycle time <strong>20%</strong> and QA effort <strong>40%</strong> via GitHub Actions and Jenkins CI/CD — built dbt models and BigQuery data models enabling predictive analytics, data analysis, and metrics formulation for cross-functional teams.</li>
+            <li>Integrated Oracle BICC extracts into the GCP data warehouse — built Tableau, Power BI, and Oracle BIP dashboards communicating analytical insights to <strong>100+ stakeholders</strong> and applying Agile methodologies throughout delivery.</li>
+            <li>Led UAT and production validation for new pipeline releases — coordinated with QA and business users to verify data accuracy against requirements, logged and triaged defects, and signed off on releases to ensure smooth handoffs into production.</li>
           </ul>
         </div>
       </div>
@@ -456,7 +461,7 @@ footer{border-top:1px solid var(--border);padding:26px 0;margin-top:30px}
         <a class="btn btn-primary" href="mailto:ishansingh98@gmail.com">ishansingh98@gmail.com</a>
         <a class="btn btn-ghost" href="assets/Ishan_Singh_CV.pdf" download="Ishan_Singh_Resume.pdf">⬇ Resume</a>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/ishansingh98" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a class="btn btn-ghost" href="https://github.com/ishansingh98" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn btn-ghost" href="https://github.com/ishan-singh98" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
     </div>
   </section>
@@ -473,6 +478,115 @@ footer{border-top:1px solid var(--border);padding:26px 0;margin-top:30px}
 <script>
 (function(){
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- ambient dataflow background (signature) ---------- */
+  (function dataflow(){
+    const cv = document.getElementById('dataflow');
+    if(!cv) return;
+    const ctx = cv.getContext('2d');
+    let W, H, dpr;
+    // node graph: a stylized data pipeline. positions in relative coords (0..1)
+    const labels = ['Kafka','BigQuery','Airflow','PySpark','dbt','RAG','pgvector','Agent','Streamlit','GCP'];
+    const palette = ['#22d3ee','#60a5fa','#34d399','#a78bfa','#f5a35c'];
+    let nodes = [], edges = [], packets = [];
+
+    function layout(){
+      // arrange nodes loosely left→right to imply flow direction
+      const cols = 5, n = labels.length;
+      nodes = labels.map((lab,i)=>{
+        const col = Math.floor(i/2);
+        const row = i%2;
+        const jitterX = (Math.sin(i*12.9)*0.5)*0.06;
+        const jitterY = (Math.cos(i*7.3)*0.5)*0.10;
+        return {
+          label: lab,
+          x: 0.08 + col*(0.84/(cols-1)) + jitterX,
+          y: 0.30 + row*0.42 + jitterY,
+          c: palette[i%palette.length],
+          phase: Math.random()*Math.PI*2
+        };
+      });
+      // connect each node forward to 1-2 nodes in next columns
+      edges = [];
+      for(let i=0;i<nodes.length;i++){
+        for(let j=0;j<nodes.length;j++){
+          if(nodes[j].x > nodes[i].x + 0.05 && nodes[j].x < nodes[i].x + 0.32){
+            if(Math.random()<0.55) edges.push({a:i,b:j});
+          }
+        }
+      }
+      // seed packets on edges
+      packets = [];
+      edges.forEach((e,idx)=>{
+        if(Math.random()<0.7) packets.push({edge:idx, t:Math.random(), speed:0.0018+Math.random()*0.0022, c:nodes[e.a].c});
+      });
+    }
+
+    function resize(){
+      dpr = Math.min(window.devicePixelRatio||1, 2);
+      W = cv.clientWidth; H = cv.clientHeight;
+      cv.width = W*dpr; cv.height = H*dpr;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    function px(n){return {x:n.x*W, y:n.y*H};}
+
+    let t0 = 0;
+    function frame(ts){
+      const time = ts*0.001;
+      ctx.clearRect(0,0,W,H);
+      // edges
+      edges.forEach(e=>{
+        const a=px(nodes[e.a]), b=px(nodes[e.b]);
+        ctx.beginPath();
+        ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+        ctx.strokeStyle='rgba(42,58,92,0.35)';
+        ctx.lineWidth=1;
+        ctx.stroke();
+      });
+      // packets travelling along edges
+      packets.forEach(p=>{
+        p.t += p.speed;
+        if(p.t>1){ p.t=0; }
+        const e=edges[p.edge]; const a=px(nodes[e.a]), b=px(nodes[e.b]);
+        const x=a.x+(b.x-a.x)*p.t, y=a.y+(b.y-a.y)*p.t;
+        // trailing glow
+        const g=ctx.createRadialGradient(x,y,0,x,y,9);
+        g.addColorStop(0,p.c); g.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.globalAlpha=0.85; ctx.fillStyle=g;
+        ctx.beginPath(); ctx.arc(x,y,9,0,Math.PI*2); ctx.fill();
+        ctx.globalAlpha=1; ctx.fillStyle=p.c;
+        ctx.beginPath(); ctx.arc(x,y,2,0,Math.PI*2); ctx.fill();
+      });
+      // nodes
+      nodes.forEach(n=>{
+        const p=px(n);
+        const pulse = 0.6 + 0.4*Math.sin(time*1.3 + n.phase);
+        // halo
+        ctx.globalAlpha=0.10*pulse;
+        ctx.fillStyle=n.c;
+        ctx.beginPath(); ctx.arc(p.x,p.y,16,0,Math.PI*2); ctx.fill();
+        // ring
+        ctx.globalAlpha=0.5;
+        ctx.strokeStyle=n.c; ctx.lineWidth=1.4;
+        ctx.beginPath(); ctx.arc(p.x,p.y,4.5,0,Math.PI*2); ctx.stroke();
+        ctx.globalAlpha=1;
+        ctx.fillStyle=n.c;
+        ctx.beginPath(); ctx.arc(p.x,p.y,2,0,Math.PI*2); ctx.fill();
+        // label
+        ctx.globalAlpha=0.45;
+        ctx.font='10px JetBrains Mono, monospace';
+        ctx.fillStyle='#7b8aa6';
+        ctx.fillText(n.label, p.x+9, p.y+3);
+        ctx.globalAlpha=1;
+      });
+      raf=requestAnimationFrame(frame);
+    }
+
+    let raf;
+    function start(){ resize(); layout(); if(!reduced){ raf=requestAnimationFrame(frame); } else { /* draw one static frame */ requestAnimationFrame(t=>{frame(t); cancelAnimationFrame(raf);}); } }
+    window.addEventListener('resize', ()=>{ resize(); layout(); });
+    start();
+  })();
 
   /* ---------- scroll reveal ---------- */
   const io = new IntersectionObserver(es=>{
